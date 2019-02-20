@@ -1,0 +1,73 @@
+
+    <link href="bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="bootstrap/fontawesome/css/all.min.css" rel="stylesheet" />
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <style>
+    body{
+        background-image: url('images/community.png');
+        background-position: left;
+        background-repeat: no-repeat;
+        background-size: 900px;
+        background-attachment: fixed;
+        background-color: #fafafa;
+    }
+    .mainc{
+        margin-buttom: 20px;
+    }
+    .formCointainer{
+        border-radius: 7px;
+        padding: 15px;
+        box-shadow: 0px 0px 12px 0px;
+    }
+    .bg{
+        position: relative;
+        margin : 0 0 15px 0;
+
+    }
+    </style>
+<div class="container">
+    <header></header>
+    <main class="row">
+
+    </main>
+</div>
+
+<div class="container mainc">
+    <div class="row">
+      <div class="col-lg-6 text-dark">
+        <h2 class="mt-5 text-center text-underline"><u>Login to our community</u></h2>
+        <p >Login to take full advantage of all the <strong>organised Events</strong> and also to query your confusion via <strong>community forum.</strong></p>
+      </div>
+      <div class="col-lg-6 ">
+        <div class="card text-center text-white mt-5 formCointainer">
+          <div class="card-heading bg-info">
+            <h2>Login</h2>
+            <p>Insert user name and password to login</p>
+          </div>
+          <div class="card-body cbody ">
+            <form class="formCointainer" method="post">   
+                <img class="bg" src="images/man1.png" alt="userlogo">
+                <div class="form-group">
+                    <input type="text" name="uname" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Username" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" name="passw" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
+                </div>
+                <input type="submit" name="Login" class="btn btn-primary btn-block" value="Log In">
+                <small id="emailHelp" class="form-text text-muted">Don't have an account?<a href="register.html">Register.</a></small>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+<script src="jq/jquery-3.3.1.min.js"></Script>
+<script>
+        $(document).ready(function(){
+            $('header').loadHtml('design.html');
+            $('header').appendHtml('design.html');
+        })
+    </script>
