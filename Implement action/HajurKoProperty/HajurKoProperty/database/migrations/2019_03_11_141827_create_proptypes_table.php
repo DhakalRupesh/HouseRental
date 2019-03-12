@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProptypeTable extends Migration
+class CreateProptypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateProptypeTable extends Migration
      */
     public function up()
     {
-        Schema::create('proptype', function (Blueprint $table) {
+        Schema::create('proptypes', function (Blueprint $table) {
             $table->increments('id');
             $table->string('propertyType',150);
             $table->timestamps();
@@ -27,6 +27,6 @@ class CreateProptypeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('proptype');
+        Schema::dropIfExists('proptypes');
     }
 }

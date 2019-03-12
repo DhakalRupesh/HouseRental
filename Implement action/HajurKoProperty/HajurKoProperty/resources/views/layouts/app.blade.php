@@ -75,8 +75,11 @@
                     <div class="dropdown">
                         <!-- Authentication Links -->
                         @guest
-                        <a class="nav-link dropdown-toggle mr-5 text-dark" href="#" id="navbarDropdown" data-target="#new" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Sign In <i class="fas fa-sign-in-alt"></i>                      
+                        <a class="nav-link  text-dark float-left" href="#" role="button">
+                            <i class="fas fa-search"></i>                      
+                        </a>
+                        <a class="nav-link dropdown-toggle  text-dark float-left" href="#" id="navbarDropdown" data-target="#new" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Sign In                     
                         </a>
                             @if (Route::has('register'))
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown" id="new">
@@ -101,8 +104,10 @@
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
-                                    
-                                    <a class="dropdown-item" href="{{ url('profile',Auth::user()->id) }}">{{ _('Edit Profile') }}</a>
+
+                                    <a class="dropdown-item" href="{{ url('profile',Auth::user()->id) }}">{{ _('Edit Profile') }}</a> 
+                                    <div class="dropdown-divider"></div>                                   
+                                    <a class="dropdown-item" href="/usrcrud">{{ _('List your property') }}</a>
                                     @if(Auth::user()->uType == 1)
                                     <a class="dropdown-item" href="{{ url('admin')}}">{{ _('Admin Pannel') }}</a> 
                                     @endif
