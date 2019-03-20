@@ -1,0 +1,14 @@
+$table->integer('bikeP');
+            $table->integer('carP');
+            $table->string('waterB');
+            $table->string('waterD');
+            
+            $table->integer('propID')->unsigned();
+            $table->foreign('propID')->references('pid')->on('properties');
+
+
+
+ $table->integer('bedRoom');
+            $table->integer('kitchen');
+            $table->integer('livingRoom');
+            $table->integer('tBathroom');

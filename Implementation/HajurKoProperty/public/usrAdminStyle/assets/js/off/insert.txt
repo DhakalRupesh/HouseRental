@@ -1,0 +1,19 @@
+        else{
+        $pid = DB::table('table_property')->max('pid');
+        }
+
+        $faci->bikeP = $request->bikeP;
+        $faci->carP = $request->carP;
+        $faci->waterB = $request->waterB;
+        $faci->waterD = $request->waterD;
+        $faci->propID = $pid;
+
+        $faci->save();
+
+        $room->kitchen = $request->kitchen;
+        $room->bedRoom = $request->bedRoom;
+        $room->livingRoom = $request->livingRoom;
+        $room->tBathroom = $request->tBathroom;
+        $room->propID = $pid;
+
+        $room->save();
