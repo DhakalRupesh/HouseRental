@@ -225,7 +225,7 @@
 
         <div class="card-body">
           <div class="text-center feature-title">
-            <h3 class="text-info pb-2">Price: 20,00,000</h3>
+            <h3 class="text-info pb-2">Price - RS {!! $datas->totPrice !!}</h3>
             <i class="fa fa-map-marker-alt"></i><small class="ml-1">{{ $datas->propLocation }}</small>
           </div>
         </div>

@@ -15,12 +15,12 @@
 		top: 8px;
 		right: 8px; 
 		color: #fff;
-    font-size: 12px;
-    text-transform: uppercase;
-    background: #e94646;
-    padding: 7px 13px;
-    display: inline-block;
-    border-radius: 2px;
+		font-size: 12px;
+		text-transform: uppercase;
+		background: #e94646;
+		padding: 7px 13px;
+		display: inline-block;
+		border-radius: 2px;
 		z-index: 3;
 	}
 </style>
@@ -85,7 +85,7 @@
 								<p><i class="fa fa-th-large"></i> {!! $details->propSize !!} Square foot</p>
 								<p><i class="fa fa-bed"></i> {!! $details->bedRoom !!} Bedrooms</p>
 								<p><i class="fa fa-utensils"></i> {!! $details->kitchen !!} Kitchen</p>
-								<p><i class="fa fa-trophy"></i> {!! $details->bikeP !!} Bike Parking</p>
+								<p><i class="fa fa-motorcycle"></i> {!! $details->bikeP !!} Bike Parking</p>
 							</div>
 							<div class="col-md-4 col-sm-6">
 								<p><i class="fa fa-couch"></i>{!! $details->livingRoom !!} Living Room</p>

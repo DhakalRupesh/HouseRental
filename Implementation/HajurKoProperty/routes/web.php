@@ -18,8 +18,7 @@ Route::get('/', function () {
 Route::get('/','userController@welcomeProp');
 // detail view
 Route::get('/propDetail/{id}','userController@detailProp');
-// link for home page
-// Route::get('/propOwner/{id}','userController@propOwner');
+
 
 Auth::routes();
 

@@ -30,7 +30,9 @@
                             <div class="input-group">
                                 <div class="input-group-addon"><i class="fa fa-building"></i></div>
                                 <select class="form-control" name="propType" required>
-                              
+                                    @foreach($pt as $pts)
+                                        <option value={{$pts->id}} {!! $props->propType_id == $pts->id?'selected':null !!}>{{$pts->propertyType}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>

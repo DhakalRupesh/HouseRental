@@ -137,14 +137,7 @@ class usrcrudController extends Controller
         ]);
     }
 
-    public function loadcmb()
-    {
-        $pt = new Proptypes();
-        $pt = $pt->get();
-        return view('propcrud.addProp',[
-            'pt'=>$pt
-        ]);
-    }
+
 
     public function displayProp()
     {
@@ -184,12 +177,16 @@ class usrcrudController extends Controller
 
         // return view('propcrud.uandv', ['prop' => $propedit]);
 
-        $propedit=Proptypes::join('Properties','Proptypes.id', '=', 'Properties.propType_id')
+        $prop=Proptypes::join('Properties','Proptypes.id', '=', 'Properties.propType_id')
         ->join('Facilities','Properties.id','=', 'Facilities.propID')
         ->join('Rooms','Properties.id','=', 'Rooms.propID')
         ->join('Images',    'Properties.id','=', 'Images.propID')->where('Properties.id',$id)
         ->get();
-        return view('propcrud.uandv', ['prop' => $propedit]);
+
+        $pt = new Proptypes();
+        $pt = $pt->get();
+
+        return view('propcrud.uandv', compact(['prop','pt']));
 
     }
 
