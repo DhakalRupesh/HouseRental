@@ -26,6 +26,9 @@
     <!-- ftawesome -->
     <link href="{!! asset('Links/fontawesome/css/all.min.css') !!}" rel="stylesheet" />
 
+    <!-- js -->
+    <script src="{!! asset('Links/js/jquery-3.3.1.min.js') !!}"></script>
+
     <!-- Custom -->
     <link rel="stylesheet" href="cus/css/style.css">
 

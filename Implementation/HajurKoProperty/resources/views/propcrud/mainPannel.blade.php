@@ -56,6 +56,8 @@
     <link href="{{ asset('usrAdminStyle/assets/off/fullcalendar.min.css') }}" rel="stylesheet" />
 
     <script src="{{ asset('js/app.js') }}" defer></script>
+
+    <script src="{!! asset('Links/imgLinks/jquery.ajaxy.js') !!}"></script>
     <style>
         nav ul a .iconP{
             margin: 0 4px 0 0px;

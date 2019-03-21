@@ -1,5 +1,11 @@
 @extends('propcrud.mainPannel')
+
 @section('mTitle') Hajurko Property-Add property @endsection
+
+<link href="{!! asset('Links/imgLinks/fileinput.css') !!}" rel="stylesheet" />
+<!-- js -->
+<script src="{!! asset('Links/imgLinks/jquery.ajaxy.js') !!}"></script>
+
 @section('uadContent')
 
 @if(session()->has('success'))
@@ -218,25 +224,10 @@
 
                         <label class="mt-3"> <h4 class="text-danger font-weight-bold"><u>Images</u></h4></label><br>
                         <label> Select four Images</label>
-                        <div class="form-row" style="margin-bottom: 15px;">
-                            <div class="col mr-2">
-                                <label for="pwd">Image1</label>
-                                <input type="file" class="form-control" name="img1" required>  
-                            </div>
-                            <div class="col">
-                                <label for="pwd">Image2</label>
-                                <input type="file" class="form-control" name="img2" required>
-                            </div>
-                        </div>
-
-                        <div class="form-row" style="margin-bottom: 15px;">
-                            <div class="col mr-2">
-                                <label for="pwd">Image3</label>
-                                <input type="file" class="form-control" name="img3" required>
-                            </div>
-                            <div class="col">
-                                <label for="pwd">Image4</label>
-                                <input type="file" class="form-control" name="img4" required>
+                        <div class="form-row">
+                            <div class="col-lg-12 col-sm-12 col-11 main-section">
+                                <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                <input class="file" id="file-1" type="file" data-overwrite-initial="false" data-min-file-count="2" multiple="true">
                             </div>
                         </div>
 

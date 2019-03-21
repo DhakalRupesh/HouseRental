@@ -254,26 +254,7 @@ class usrcrudController extends Controller
             $img->img1 = $file_name;
             $img->propID = $pid;
         }  
-        
-        if (request()->hasFile('img2')) {
-            $file_name = $this->fileUpload(request()->file('img2'), $this->file_dir);
-            $img->img2 = $file_name;
-            $img->propID = $pid;
-        } 
-    
-        if (request()->hasFile('img3')) {
-            $file_name = $this->fileUpload(request()->file('img3'), $this->file_dir);
-            $img->img3 = $file_name;
-            $img->propID = $pid;
-        }  
-   
-        if (request()->hasFile('img4')) {
-            $file_name = $this->fileUpload(request()->file('img4'), $this->file_dir);
-            $img->img4 = $file_name;
-            $img->propID = $pid;
-        }    
-          
-        $img->save();
+  
         return redirect('editProp')->with('success', 'Property Updated successfully');
     }
 

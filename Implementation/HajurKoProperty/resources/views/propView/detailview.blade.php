@@ -121,15 +121,15 @@
 						<h3 class="sl-sp-title mt-3">Price</h3>
 						<div class="row">
 							<div class="col-md-4 col-sm-6">
-								<p><i class="fa fa-tint"></i>Water - RS. {!! $details->waterP !!}</p>
-								<p><i class="fa fa-bolt"></i>Electricity - RS. {!! $details->electricP !!}</p>
-								<p><i class="fa fa-user"></i>Property Price- RS. {!! $details->totPrice !!}</p>
+								<p id=""><i class="fa fa-tint"></i>Water - RS. <span id="p1">{!! $details->waterP !!}</span></p>
+								<p id="p2"><i class="fa fa-bolt"></i>Electricity - RS. {!! $details->electricP !!}</p>
+								<p id="p3"><i class="fa fa-user"></i>Property Price- RS. {!! $details->totPrice !!}</p>
 							</div>
 							<div class="col-md-4 col-sm-6">
 								<form action="">
 									@csrf
-									<input type="button" id="taxCalbtn" class="btn btn-success pl-5  pr-5 p-2 pb-2 font-weight-bold" value="Calculate Tax">
-									<input type="text" name="kitchen" class="form-control mt-2" placeholder="Result" readonly>
+									<input type="button" id="taxCalbtn" onclick="calTax()" class="btn btn-success pl-5  pr-5 p-2 pb-2 font-weight-bold" value="Calculate Tax">
+									<input type="text" id="resBox" name="kitchen" class="form-control mt-2" placeholder="Result" readonly>
 								</form>
 							</div>
 						
@@ -218,7 +218,7 @@
 	
 
 @endforeach
-
+@extends('_layouts.customFoot')
 @endsection 
 
 <script type="text/javascript" lang="javascript"> 
@@ -240,6 +240,15 @@ function newFunction(){
 	
 }
 
+calTax = function()
+{
+	var val1 = document.getElementById('p1').value;
+	var val2 = document.getElementById('p2').value;
+	var val3 = document.getElementById('p3').value;
+
+	var total = parseInt(val1) + parseInt(val2) + parseInt(val3);
+
+	document.getElementById('resBox').value = parseFloat(val1);
+}
 
 </script>	
-@extends('_layouts.customFoot')
