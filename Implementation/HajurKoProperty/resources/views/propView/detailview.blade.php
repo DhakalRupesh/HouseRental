@@ -25,6 +25,21 @@
 	}
 </style>
 @section('content')
+@if(session()->has('success'))
+<div class="alert alert-success">
+    {{ session()->get('success') }}
+</div>
+@endif
+
+@if($errors->any())
+<div class="alert alert-danger">
+    <ul class="list-unstyled">
+        @foreach($errors->all() as $error)
+            <li> {{ $error  }}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
 	<!-- Page top section -->
 	<section class="page-top-section set-bg" > 
 		<div class="container text-white">
@@ -47,7 +62,7 @@
 						<div class="carousel-inner">
 							<div class="carousel-item active">
 								<img class="d-block w-100" src="{{ asset('images/hBanner.jpg') }}" alt="First slide">
-								<div class="tag">{!! $details->propFor !!}</div>
+								<div class="tag">for {!! $details->propFor !!}</div>
 							</div>
 							<div class="carousel-item">
 								<img class="d-block w-100" src="{{ asset('images/bannerH.jpg') }}" alt="Second slide">
@@ -76,7 +91,12 @@
 								<small>District: {!! $details->propDistrict !!}</small>
 							</div>
 							<div class="col-xl-4 mt-2">
-								<a href="#" class="btn btn-success pl-5 pr-5 pt-3 pb-3 font-weight-bold">Book Now</a>
+								<form action="{!! url('/propDetail',[$details->id])!!}" method="POST">
+									@csrf
+									
+									<button type="submit"  id="btnB{!! $details->id !!}" onclick="newFunction()" name="book{!! $details->id !!}" class="btn btn-success pl-5 pr-5 pt-3 pb-3 font-weight-bold btnB">Book Now</button>
+									<button type="submit" id="btnU" onclick="newFunction1()" class="btn btn-danger pl-5 pr-5 pt-3 pb-3 font-weight-bold">Unbook</button>
+								</form>
 							</div>
 						</div>
 						<h3 class="sl-sp-title mt-3">Property Details</h3>
@@ -196,15 +216,30 @@
 		</div>
 	</section>
 	
-<script>
-	$(document).ready(function(){
-			$("#taxCalbtn").Click(function(){
-				alert("new");
-			});
-	});
-</script>	
+
 @endforeach
 
-
-
 @endsection 
+
+<script type="text/javascript" lang="javascript"> 
+
+// window.onload = function(){
+// 	document.getElementById("btnU").style.display="none";
+// }
+// function newFunction(){
+// 	document.getElementById("btnB").style.display="none";
+// 	document.getElementById("btnU").style.display="block";
+// }
+// function newFunction1(){
+// 	document.getElementById("btnU").style.display="none";
+// 	document.getElementById("btnB").style.display="block";
+// }
+
+function newFunction(){
+	document.getElementById("btnB{!! $details->id !!}").hidden=true;
+	
+}
+
+
+</script>	
+@extends('_layouts.customFoot')

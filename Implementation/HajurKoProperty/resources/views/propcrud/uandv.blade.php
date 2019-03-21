@@ -3,27 +3,28 @@
 @section('uadContent')
 
 @if(session()->has('success'))
-    <div class="alert-success">
-        <h3 class="bg-success text-white p-2"> {!! session()->get('success') !!}</h3>
-    </div>
+<div class="alert alert-success">
+    {{ session()->get('success') }}
+</div>
 @endif
 
 @if($errors->any())
-    <div class="alert alert-danger">
-        <ul class="list-unstyled">
-            @foreach($errors->all() as $error)
-                <li> {{ $error  }}</li>
-            @endforeach
-        </ul>
-    </div>
+<div class="alert alert-danger">
+    <ul class="list-unstyled">
+        @foreach($errors->all() as $error)
+            <li> {{ $error  }}</li>
+        @endforeach
+    </ul>
+</div>
 @endif
 
 <div class="card mt-3">
             <div class="card-header h4 text-primary">Update your property</div>
                 <div class="card-body">
                     @foreach($prop as $props)
-                    <form action="" method="post" enctype="multipart/form-data">
+                    <form action="{!! url('editProp',$props->id) !!}" method="post" enctype="multipart/form-data">
                     @csrf
+                    {!! method_field('put') !!}
                         <label class="mt-3"> <h4 class="text-primary font-weight-bold"><u>Property Details</u></h4> </label>
                         <div class="form-group">
                             <label class=" form-control-label">Property Type</label>
@@ -242,15 +243,10 @@
                         </div>
 
                         <p class="text-center mt-5">
-                            <input type="submit" class="btn btn-success btn-block shadow" name="insert" value="Submit">   
+                            <input type="submit" class="btn btn-success btn-block shadow" name="update" value="Update">   
                         </P>
                     </form>
                     @endforeach
                 </div>
-            </div>
-<script>
-$(document).ready(function(){
-    
-});
-</script>
+            </div>          
 @endsection

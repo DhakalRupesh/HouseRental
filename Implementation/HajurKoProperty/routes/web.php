@@ -16,9 +16,6 @@ Route::get('/', function () {
 });
 // quick view after loged in and non logged
 Route::get('/','userController@welcomeProp');
-// detail view
-Route::get('/propDetail/{id}','userController@detailProp');
-
 
 Auth::routes();
 
@@ -36,8 +33,8 @@ Route::get('/usrpannel',function(){
 //User Part
 //userPannel
 
-Route::get('/usrcrud',function(){
-    return view('propcrud.mainPannel');
+Route::get('/listingsyour',function(){
+    return view('propcrud.editProp');
 })->middleware('auth');
 
 //add prop 
@@ -45,10 +42,11 @@ Route::get('/addProp',function(){
     return view('propcrud.addProp');
 })->middleware('auth');
 Route::post('/addProp','usrcrudController@store'); // insert property
-Route::get('/editProp','usrcrudController@displayProp')->middleware('auth'); // edit quick view
-Route::get('/editProp/{pid}','usrcrudController@edit'); // edit view by id
+Route::get('/listingsyour','usrcrudController@displayProp')->middleware('auth'); // edit quick view
+Route::get('/editProp/edit/{id}','usrcrudController@edit'); // edit view by id
 
-Route::delete('/editProp/{pid}', 'usrcrudController@destroy'); //delete
+Route::delete('/editProp/{id}', 'usrcrudController@destroy'); //delete
+Route::put('/editProp/{id}','usrcrudController@update');
 //retrive in select 
 Route::get('addProp','usrcrudController@getPropType');
 // Route::get('/editProp/{pid}','usrcrudController@loadcmb');
@@ -56,6 +54,9 @@ Route::get('addProp','usrcrudController@getPropType');
 Route::get('/propdetail',function(){
     return view('propView.detailview');
 });
+// detail view
+Route::get('/propDetail/{id}','userController@detailProp');
+Route::post('/propDetail/{id}','userController@bookProp');
 // for map 
 Route::get('/mapApi', function(){
     return view('mapApi.mapAdd');
@@ -66,7 +67,7 @@ Route::get('/about', function(){
 }); 
 //listings page
 Route::get('/listings',function(){
-    return view('listings');
+    return view('propView.listings');
 });
 
 // Admin part

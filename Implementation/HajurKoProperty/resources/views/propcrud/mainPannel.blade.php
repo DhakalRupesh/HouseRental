@@ -77,12 +77,12 @@
                 <div id="main-menu" class="main-menu collapse navbar-collapse">
                     <ul class="nav navbar-nav">
                         <li class="">
-                            <a href="{{ url('/usrcrud') }}"><i class="menu-icon fa fa-columns"></i>Dashboard </a>
+                            <a href="{{ url('/listingsyour') }}"><i class="menu-icon fa fa-columns"></i>Dashboard </a>
                         </li>
                         <li class="menu-title">Property</li>
                         <li class="menu-item">
                             <a href="{{ url('addProp') }}" class="" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-plus"></i>Add Property Listing</a>
-                            <a href="{{ url('editProp') }}" class="" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-edit"></i>Edit Property Listing</a>
+                            <a href="{{ url('listingsyour') }}" class="" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-edit"></i>Edit Property Listing</a>
                         </li>
     
                         <li class="menu-title">Listings</li>

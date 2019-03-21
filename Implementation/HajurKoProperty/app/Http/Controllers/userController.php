@@ -127,17 +127,6 @@ class userController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // validation goes here 
-        // $this->validate ($request, [
-        //     'fullname' => ['required', 'string', 'max:255'],
-        //     'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-        //     'district'=>['string'],
-        //     'city'=>['string'],
-        //     'address'=>['string'],
-        //     'mobNo'=>['max:15'],
-        //     'password' => ['required', 'string', 'min:6', 'confirmed'],
-        // ]);
-
         $usr = User::find($id);
      
         
@@ -168,4 +157,26 @@ class userController extends Controller
     {
       
     }    
+
+    public function bookProp($id)
+    {
+        if(Auth::check()){
+            $propBook = new Bookings();
+
+            $date = date("Y-m-d");
+            // $time = strtotime("now");
+            $usID = Auth::user()->id;
+            $prID = $id;
+
+            $propBook->bookedDate = $date; 
+            // $propBook->bookedTime = $time; 
+            $propBook->user_id = $usID; 
+            $propBook->propID = $prID; 
+
+            $propBook->save();
+            return redirect()->back()->with('success', 'Property added to booked list');
+        }else{
+            return redirect('login')->with('success', 'Login to continue');
+        }
+    }
 }

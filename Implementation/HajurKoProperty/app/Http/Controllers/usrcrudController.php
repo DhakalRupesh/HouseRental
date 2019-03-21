@@ -199,7 +199,82 @@ class usrcrudController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate(request(),[
+            'location' => 'required|max:150',
+            
+        ]);
+
+        // $propType = Proptypes::find($id);
+
+        return $prop = Properties::find($id);
+        // $prop = DB::table('properties')->where('id',$id);
+        // dd($prop);
+        $prop->propFor = $request->propFor; 
+        $prop->propDistrict = $request->district;
+        $prop->propLocation = $request->location; 
+        $prop->propSize = $request->size; 
+        $prop->suitableFor = $request->suitable; 
+        $prop->waterP = $request->watPrice; 
+        $prop->electricP = $request->electricP; 
+        $prop->totPrice = $request->propPrice; 
+        $prop->description = $request->description; 
+        
+        $prop->propType_id = $request->propType;
+        $prop->user_id = $request->uid;
+        
+        $propSave = $prop->save();
+        if(!$propSave){
+            return redirect()->to('addProp')->with('Message','Eroor adding new property');
+        }else{
+            $pid = DB::table('properties')->max('id');
+            // dd($pid);
+        }
+
+        // $faci = Facilities::find($id);
+        $faci->bikeP = $request->bikeP;
+        $faci->carP = $request->carP;
+        $faci->waterB = $request->waterB;
+        $faci->waterD = $request->waterD;
+        $faci->propID = $pid;
+        $faci->save();
+
+        // $room = Rooms::find($id);
+        $room->kitchen = $request->kitchen;   
+        $room->bedRoom = $request->bedRoom;   
+        $room->livingRoom = $request->livingRoom;   
+        $room->tBathroom = $request->tBathroom;
+        $room->totRooms = $request->totRoom;        
+        $room->propID = $pid;
+        $room->save();
+        
+        // do image via array
+        // $img = Images::find($id);
+        if (request()->hasFile('img1')) {
+            $file_name = $this->fileUpload(request()->file('img1'), $this->file_dir);
+            $img->img1 = $file_name;
+            $img->propID = $pid;
+        }  
+        
+        if (request()->hasFile('img2')) {
+            $file_name = $this->fileUpload(request()->file('img2'), $this->file_dir);
+            $img->img2 = $file_name;
+            $img->propID = $pid;
+        } 
+    
+        if (request()->hasFile('img3')) {
+            $file_name = $this->fileUpload(request()->file('img3'), $this->file_dir);
+            $img->img3 = $file_name;
+            $img->propID = $pid;
+        }  
+   
+        if (request()->hasFile('img4')) {
+            $file_name = $this->fileUpload(request()->file('img4'), $this->file_dir);
+            $img->img4 = $file_name;
+            $img->propID = $pid;
+        }    
+          
+        $img->save();
+        return redirect('editProp')->with('success', 'Property Updated successfully');
     }
 
     /**
