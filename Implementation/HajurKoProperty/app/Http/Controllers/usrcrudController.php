@@ -59,7 +59,7 @@ class usrcrudController extends Controller
         $propType = new Proptypes();
 
         $prop = new Properties();
-        $prop->propFor = $request->propFor; 
+        $prop->propFor = $request->propFor;  
         $prop->propDistrict = $request->district;
         $prop->propLocation = $request->location; 
         $prop->propSize = $request->size; 
@@ -74,7 +74,7 @@ class usrcrudController extends Controller
             
         $propSave = $prop->save();
         if(!$propSave){
-            return redirect()->to('addProp')->with('Message','Eroor adding new property');
+            return redirect()->to('addProp')->with('Message','Error adding new property');
         }else{
             $pid = DB::table('properties')->max('id');
             // dd($pid);
@@ -180,14 +180,14 @@ class usrcrudController extends Controller
         $prop=Proptypes::join('Properties','Proptypes.id', '=', 'Properties.propType_id')
         ->join('Facilities','Properties.id','=', 'Facilities.propID')
         ->join('Rooms','Properties.id','=', 'Rooms.propID')
-        ->join('Images',    'Properties.id','=', 'Images.propID')->where('Properties.id',$id)
+        ->where('Properties.id',$id)
         ->get();
 
         $pt = new Proptypes();
         $pt = $pt->get();
 
         return view('propcrud.uandv', compact(['prop','pt']));
-
+        // ->join('Images',    'Properties.id','=', 'Images.propID')
     }
 
     /**
@@ -205,11 +205,13 @@ class usrcrudController extends Controller
         ]);
 
         // $propType = Proptypes::find($id);
+        // return $prop
 
-        return $prop = Properties::find($id);
+        $prop = Properties::find($id);
         // $prop = DB::table('properties')->where('id',$id);
         // dd($prop);
-        $prop->propFor = $request->propFor; 
+        $prop->propType_id = $request->propType;
+        $prop->propFor = $request->propFor;  
         $prop->propDistrict = $request->district;
         $prop->propLocation = $request->location; 
         $prop->propSize = $request->size; 
@@ -218,44 +220,29 @@ class usrcrudController extends Controller
         $prop->electricP = $request->electricP; 
         $prop->totPrice = $request->propPrice; 
         $prop->description = $request->description; 
-        
-        $prop->propType_id = $request->propType;
-        $prop->user_id = $request->uid;
-        
+
         $propSave = $prop->save();
         if(!$propSave){
-            return redirect()->to('addProp')->with('Message','Eroor adding new property');
+            return redirect()->to('addProp')->with('Message','Error adding new property');
         }else{
-            $pid = DB::table('properties')->max('id');
+            $pid = DB::table('properties')->where('id',$id);
             // dd($pid);
         }
+// dd($request);
+        
 
-        // $faci = Facilities::find($id);
         $faci->bikeP = $request->bikeP;
         $faci->carP = $request->carP;
         $faci->waterB = $request->waterB;
         $faci->waterD = $request->waterD;
-        $faci->propID = $pid;
+        return $faci->propID = $pid;
+
         $faci->save();
 
-        // $room = Rooms::find($id);
-        $room->kitchen = $request->kitchen;   
-        $room->bedRoom = $request->bedRoom;   
-        $room->livingRoom = $request->livingRoom;   
-        $room->tBathroom = $request->tBathroom;
-        $room->totRooms = $request->totRoom;        
-        $room->propID = $pid;
-        $room->save();
-        
-        // do image via array
-        // $img = Images::find($id);
-        if (request()->hasFile('img1')) {
-            $file_name = $this->fileUpload(request()->file('img1'), $this->file_dir);
-            $img->img1 = $file_name;
-            $img->propID = $pid;
-        }  
+     
+      
   
-        return redirect('editProp')->with('success', 'Property Updated successfully');
+        return redirect()->back()->with('success', 'Property Updated successfully');
     }
 
     /**

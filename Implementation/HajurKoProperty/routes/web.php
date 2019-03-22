@@ -43,7 +43,7 @@ Route::get('/addProp',function(){
 })->middleware('auth');
 Route::post('/addProp','usrcrudController@store'); // insert property
 Route::get('/listingsyour','usrcrudController@displayProp')->middleware('auth'); // edit quick view
-Route::get('/editProp/edit/{id}','usrcrudController@edit'); // edit view by id
+Route::get('/editProp/{id}','usrcrudController@edit'); // edit view by id
 
 Route::delete('/editProp/{id}', 'usrcrudController@destroy'); //delete
 Route::put('/editProp/{id}','usrcrudController@update');

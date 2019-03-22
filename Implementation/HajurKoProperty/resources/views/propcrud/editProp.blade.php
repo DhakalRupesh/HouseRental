@@ -266,7 +266,7 @@
         </div>
               
         <div class="bg-white text-center pt-3" style="border-top: 1px solid #ebebeb;"> 
-        <a href="{!! url('/editProp/edit', $datas->id) !!}" type="button" class="btn btn-Success mb-1" style="border-radius: 25px;">View and Edit</a>
+        <a href="{!! url('/editProp', $datas->id) !!}" type="button" class="btn btn-Success mb-1" style="border-radius: 25px;">View and Edit</a>
             <form action="{!! url('/editProp',[$datas->id]) !!}" method="POST">
                 @csrf
                 {!! method_field('DELETE') !!}
