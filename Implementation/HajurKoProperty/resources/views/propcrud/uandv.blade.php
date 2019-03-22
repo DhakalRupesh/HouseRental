@@ -50,7 +50,7 @@
                             </div>
                         </div>
                         
-                        <input type="hidden" name="uid" value="{{ Auth::user()->id }}">
+                        {{-- <input type="hidden" name="uid" value="{{ Auth::user()->id }}"> --}}
 
                         <div class="form-row mb-3">
                             <div class="col">

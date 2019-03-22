@@ -203,13 +203,9 @@ class usrcrudController extends Controller
             'location' => 'required|max:150',
             
         ]);
-
-        // $propType = Proptypes::find($id);
-        // return $prop
-
+        
         $prop = Properties::find($id);
-        // $prop = DB::table('properties')->where('id',$id);
-        // dd($prop);
+        // $prop = DB::table('properties')->where('id',$id)->get(); 
         $prop->propType_id = $request->propType;
         $prop->propFor = $request->propFor;  
         $prop->propDistrict = $request->district;
@@ -220,28 +216,27 @@ class usrcrudController extends Controller
         $prop->electricP = $request->electricP; 
         $prop->totPrice = $request->propPrice; 
         $prop->description = $request->description; 
-
-        $propSave = $prop->save();
-        if(!$propSave){
-            return redirect()->to('addProp')->with('Message','Error adding new property');
-        }else{
-            $pid = DB::table('properties')->where('id',$id);
-            // dd($pid);
-        }
-// dd($request);
+        $prop->save();
         
-
+        $faci = Facilities::find($id)->where('propID',$id)->first();
         $faci->bikeP = $request->bikeP;
         $faci->carP = $request->carP;
         $faci->waterB = $request->waterB;
         $faci->waterD = $request->waterD;
-        return $faci->propID = $pid;
-
+        $faci->propID = $id;
         $faci->save();
 
-     
-      
-  
+        $room = Rooms::find($id)->where('propID',$id)->first();
+        $room->kitchen = $request->kitchen;   
+        $room->bedRoom = $request->bedRoom;   
+        $room->livingRoom = $request->livingRoom;   
+        $room->tBathroom = $request->tBathroom;
+        $room->totRooms = $request->totRoom;        
+        $room->propID = $id;
+        $room->save();
+
+
+
         return redirect()->back()->with('success', 'Property Updated successfully');
     }
 
