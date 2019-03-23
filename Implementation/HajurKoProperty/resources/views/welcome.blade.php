@@ -7,10 +7,7 @@
         background: url('images/abtUS.jpg');
     }
     .banner_area {
-        /* position: relative; */
-        /* z-index: 1; */
         min-height: 200px;
-        /* margin-bottom: 140px; */
     }
     
     .topText:hover{
@@ -199,6 +196,7 @@
         font-weight: 400;
         margin-bottom: 30px;
     }
+
 </style>
 
 @section('content')
@@ -213,13 +211,40 @@
             </div>
         </div>
     </div>
+        <!-- custom search -->
+    <div class="container">
+        <div class="advanced_search">
+            <h3>Filter Property</h3>
+            <div class="search_select">
+                <form class="">
+                    <input type="text" class="s_Select mb-3" placeholder="Enter a location......">
+                    <select class="s_select mb-3">      
+                        <option selected disabled>Property Type</option>
+                        <option value="">new</option>
+                    </select>
+                    <select class="s_Select"> 
+                        <option selected disabled>Select price range</option>
+                        <option value="">new</option>
+                    </select>
+                    <button class="main_btn mt-4">SEARCH</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- custom search end -->
 </section>
 
-<div class="container mt-5">
+<div class="container pt-5 mt-4">
+    {{-- <input type="hidden"> --}}
+</div>
+
+<div class="container mt-5 pt-5">
     <div class="text-center">
         <h2 class="text-dark mb-2">Featured Listings</h2>
         <small>Browse the featured product and select your's</small>
     </div>
+</div>
+<div class="container">
   <div class="row">
     @foreach($welprop as $welprops)
     <div class="col-lg-4 col-md-6 mt-5"  style="">

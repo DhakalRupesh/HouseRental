@@ -32,6 +32,8 @@
     <!-- Custom -->
     <link rel="stylesheet" href="cus/css/style.css">
 
+    <link rel="stylesheet" href="{!! asset('cus/css/nice-select.css') !!}">
+
     <!-- animate -->
     <link rel="stylesheet" href="cus/vendors/animate-css/animate.css">
     
