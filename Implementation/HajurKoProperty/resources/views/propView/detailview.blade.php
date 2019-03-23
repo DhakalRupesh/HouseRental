@@ -45,7 +45,7 @@
 		<div class="container text-white">
 			@foreach($detail as $details)
 			<h2>Property Details</h2>
-			<h5>Suitable for - <span class="text-info">{!! $details->suitableFor !!}</span></h5>
+			<h6> <span class="text-info" value="">{!! $details->propertyType !!}</span> - Suitable for - <span class="text-info">{!! $details->suitableFor !!}</span></h6>
 		</div>
 	</section>
 	<section class="page-section mt-3">
@@ -93,9 +93,21 @@
 							<div class="col-xl-4 mt-2">
 								<form action="{!! url('/propDetail',[$details->id])!!}" method="POST">
 									@csrf
-									
-									<button type="submit"  id="btnB{!! $details->id !!}" onclick="newFunction()" name="book{!! $details->id !!}" class="btn btn-success pl-5 pr-5 pt-3 pb-3 font-weight-bold btnB">Book Now</button>
-									<button type="submit" id="btnU" onclick="newFunction1()" class="btn btn-danger pl-5 pr-5 pt-3 pb-3 font-weight-bold">Unbook</button>
+
+									@if (!$book->isEmpty())	
+										@foreach($book as $books)
+											@if($books->user_id== Auth::user()->id && $books->propID==$details->id && $books->status=="unbooked")
+											<button type="submit" id="btnU" onclick="newFunction1()" class="btn btn-danger pl-5 pr-5 pt-3 pb-3 font-weight-bold">Unbook</button>
+											
+											@else 
+											<button type="submit"  id="btnB{!! $details->id !!}" onclick="newFunction()" name="book{!! $details->id !!}" class="btn btn-success pl-5 pr-5 pt-3 pb-3 font-weight-bold">Book Now</button>
+											@endif
+										@endforeach
+									@else
+										<button type="submit"  id="btnB{!! $details->id !!}" onclick="newFunction()" name="book{!! $details->id !!}" class="btn btn-success pl-5 pr-5 pt-3 pb-3 font-weight-bold">Book Now</button>
+									@endif
+
+
 								</form>
 							</div>
 						</div>
@@ -175,39 +187,9 @@
 							</div>
 							<div class="rp-info">
 								<h5>1963 S Crescent Heights Blvd</h5>
-								<p><i class="fa fa-map-marker"></i>Los Angeles, CA 90034</p>
+								<p><i class="fa fa-map-marker-alt"></i>Los Angeles, CA 90034</p>
 							</div>
-							<a href="#" class="rp-price">$1,200,000</a>
-						</div>
-						<div class="rp-item">
-							<div class="rp-pic set-bg" data-setbg="img/feature/2.jpg">
-								<div class="rent-notic">FOR Rent</div>
-							</div>
-							<div class="rp-info">
-								<h5>17 Sturges Road, Wokingham</h5>
-								<p><i class="fa fa-map-marker"></i> Newtown, CT 06470</p>
-							</div>
-							<a href="#" class="rp-price">$2,500/month</a>
-						</div>
-						<div class="rp-item">
-							<div class="rp-pic set-bg" data-setbg="img/feature/4.jpg">
-								<div class="sale-notic">FOR SALE</div>
-							</div>
-							<div class="rp-info">
-								<h5>28 Quaker Ridge Road, Manhasset</h5>
-								<p><i class="fa fa-map-marker"></i>28 Quaker Ridge Road, Manhasset</p>
-							</div>
-							<a href="#" class="rp-price">$5,600,000</a>
-						</div>
-						<div class="rp-item">
-							<div class="rp-pic set-bg" data-setbg="img/feature/5.jpg">
-								<div class="rent-notic">FOR Rent</div>
-							</div>
-							<div class="rp-info">
-								<h5>Sofi Berryessa 750 N King Road</h5>
-								<p><i class="fa fa-map-marker"></i>Sofi Berryessa 750 N King Road</p>
-							</div>
-							<a href="#" class="rp-price">$1,600/month</a>
+							<a href="#" class="rp-price">View Details</a>
 						</div>
 					</div>
 				</div>

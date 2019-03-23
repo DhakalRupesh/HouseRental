@@ -36,45 +36,7 @@ class userController extends Controller
             'User' =>  $usr
         ]);
     }
-
-    public function welcomeProp()
-    {
-        if(Auth::check()){
-            $usrProp = DB::table('properties')
-            ->join('facilities','properties.id','=','facilities.propID')
-            ->join('rooms','properties.id','=','rooms.propID')
-            ->where('user_id', '!=' ,Auth::User()->id)
-            ->limit('6')
-            ->get();
-
-            return view('welcome')->with('welprop',$usrProp);
-        }
-        else{
-            $usrProp = DB::table('properties')
-            ->join('facilities','properties.id','=','facilities.propID')
-            ->join('rooms','properties.id','=','rooms.propID')
-            ->limit('6')
-            ->get();
-
-            return view('welcome')->with('welprop',$usrProp);
-        }
-    }
-
-    public function detailProp($id)
-    {   
-        $detail = DB::table('properties')
-        ->join('facilities','properties.id','=','facilities.propID')
-        ->join('rooms','properties.id','=','rooms.propID')->where('properties.id',$id)
-        ->get();
-
-        //owner detail 
-        $usrDetail = DB::table('users')
-        ->join('properties','users.id', '=', 'properties.user_id')
-        ->where('properties.id',$id)
-        ->get();
-
-        return View('propView.detailview', compact(['detail','usrDetail']));
-    }
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -140,6 +102,29 @@ class userController extends Controller
         // return redirect()->to('profile/{id}')->with('success','profile updated successfully');
         return redirect()->back()->with('message', 'profile updated successfully');
 
+    }
+
+    public function welcomeProp()
+    {
+        if(Auth::check()){
+            $usrProp = DB::table('properties')
+            ->join('facilities','properties.id','=','facilities.propID')
+            ->join('rooms','properties.id','=','rooms.propID')
+            ->where('user_id', '!=' ,Auth::User()->id)
+            ->limit('6')
+            ->get();
+
+            return view('welcome')->with('welprop',$usrProp);
+        }
+        else{
+            $usrProp = DB::table('properties')
+            ->join('facilities','properties.id','=','facilities.propID')
+            ->join('rooms','properties.id','=','rooms.propID')
+            ->limit('6')
+            ->get();
+
+            return view('welcome')->with('welprop',$usrProp);
+        }
     }
 
     /**

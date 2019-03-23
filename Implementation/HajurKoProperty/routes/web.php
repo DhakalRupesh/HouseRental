@@ -43,19 +43,19 @@ Route::get('/addProp',function(){
 })->middleware('auth');
 Route::post('/addProp','usrcrudController@store'); // insert property
 Route::get('/listingsyour','usrcrudController@displayProp')->middleware('auth'); // edit quick view
-Route::get('/editProp/{id}','usrcrudController@edit'); // edit view by id
+Route::get('/editProp/{id}','usrcrudController@edit')->middleware('auth');// edit view by id
 
 Route::delete('/editProp/{id}', 'usrcrudController@destroy'); //delete
 Route::put('/editProp/{id}','usrcrudController@update');
 //retrive in select 
-Route::get('addProp','usrcrudController@getPropType');
+Route::get('/addProp','usrcrudController@getPropType')->middleware('auth');
 // Route::get('/editProp/{pid}','usrcrudController@loadcmb');
 //detail page
 Route::get('/propdetail',function(){
     return view('propView.detailview');
 });
 // detail view
-Route::get('/propDetail/{id}','userController@detailProp');
+Route::get('/propDetail/{id}','detailController@detailProp');
 Route::post('/propDetail/{id}','userController@bookProp');
 // for map 
 Route::get('/mapApi', function(){
