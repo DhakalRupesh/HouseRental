@@ -62,7 +62,7 @@
 						<div class="carousel-inner">
 							<div class="carousel-item active">
 								<img class="d-block w-100" src="{{ asset('images/hBanner.jpg') }}" alt="First slide">
-								<div class="tag">for {!! $details->propFor !!}</div>
+								<div class="tag" name="ppfor">for {!! $details->propFor !!}</div>
 							</div>
 							<div class="carousel-item">
 								<img class="d-block w-100" src="{{ asset('images/bannerH.jpg') }}" alt="Second slide">
@@ -91,6 +91,7 @@
 								<small>District: {!! $details->propDistrict !!}</small>
 							</div>
 							<div class="col-xl-4 mt-2">
+
 								<form action="{!! url('/propDetail',[$details->id])!!}" method="POST">
 									@csrf
 
@@ -106,7 +107,6 @@
 									@else
 										<button type="submit"  id="btnB{!! $details->id !!}" onclick="newFunction()" name="book{!! $details->id !!}" class="btn btn-success pl-5 pr-5 pt-3 pb-3 font-weight-bold">Book Now</button>
 									@endif
-
 
 								</form>
 							</div>
@@ -169,28 +169,33 @@
 						@endforeach
 						</div>
 					</div>
-					<div class="contact-form-card">
-						<h5>Do you have any question?</h5>
-						<form>
-							<input type="text" placeholder="Your name">
-							<input type="text" placeholder="Your email">
-							<textarea placeholder="Your question"></textarea>
-							<button>SEND</button>
-						</form>
-					</div>
-
+					
 					<div class="related-properties">
 						<h2>Related Property</h2>
-						<div class="rp-item">
-							<div class="rp-pic set-bg" data-setbg="img/feature/1.jpg">
-								<div class="sale-notic">FOR SALE</div>
-							</div>
-							<div class="rp-info">
-								<h5>1963 S Crescent Heights Blvd</h5>
-								<p><i class="fa fa-map-marker-alt"></i>Los Angeles, CA 90034</p>
-							</div>
-							<a href="#" class="rp-price">View Details</a>
-						</div>
+						@php
+							$side = DB::table('proptypes')
+							->join('properties','properties.propType_id', '=', 'proptypes.id')
+							->where('propFor','=',$details->propFor)
+							->where('properties.id', '!=', $details->id)
+							->limit('3')
+							->get();
+							// dd($side);
+
+						@endphp
+						@foreach($side as $sides)
+							<div class="rp-item">
+								<div class="rp-pic set-bg" data-setbg="img/feature/1.jpg">
+								<div class="sale-notic">{!! $sides->propFor !!}</div>
+								</div>
+								<div class="rp-info">
+									<h5>RS. {!! $sides->totPrice !!} /-</h5>
+									<p><i class="fa fa-map-marker-alt"><span class="text-dark pl-1">{!! $sides->propLocation !!}</span></i></p>
+									<p><span class="text-dark pl-1">{!! $sides->suitableFor !!}</span></p>
+									<p><span class="text-dark pl-1" value="{!! $sides->suitableFor !!}">{!! $sides->suitableFor !!}</span></p>									
+								</div>
+								<a href="#" class="rp-price">View Details</a>
+							</div>										
+						@endforeach
 					</div>
 				</div>
 				<!-- sidebar end -->

@@ -47,10 +47,7 @@ class detailController extends Controller
         $book = DB::table('bookings')->get();
 
         //side view
-        // $side = DB::table('proptypes')
-        // ->join('properties','properties.propType_id', '=', 'proptypes.id')
-        // ->where('')
-        // ->get();
+    
         return View('propView.detailview', compact(['detail','usrDetail','book']));
     }
     /**
