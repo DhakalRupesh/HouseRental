@@ -69,6 +69,7 @@ Route::get('/about', function(){
 Route::get('/listings',function(){
     return view('propView.listings');
 });
+Route::get('/listings','listingController@listProp');
 
 // Admin part
 Route::get('/admin', function(){
