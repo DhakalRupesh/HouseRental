@@ -25,37 +25,10 @@
 
     <!-- ftawesome -->
     <link href="{!! asset('Links/fontawesome/css/all.min.css') !!}" rel="stylesheet" />
-
-    <!-- Custom -->
-    <link rel="stylesheet" href="cus/css/style.css">
-
-    <!-- animate -->
-    <link rel="stylesheet" href="cus/vendors/animate-css/animate.css">
     
-    <!-- extraresponsive -->
-    <link rel="stylesheet" href="cus/css/responsive.css">
+    <!-- js -->
+    <script src="{!! asset('Links/js/jquery-3.3.1.min.js') !!}"></script>
 
-    {{-- admin and usr styles --}}
-    <link rel="stylesheet" href="{{ asset('usrAdminStyle/assets/off/normalize.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('usrAdminStyle/assets/off/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('usrAdminStyle/assets/off/font-awesome.min.css') }}">
-    <link rel="stylesheet" href="{!! asset('Links/fontawesome/css/all.min.css') !!}" rel="stylesheet" />
-
-    <link rel="stylesheet" href="{{ asset('usrAdminStyle/assets/off/themify-icons.css') }}">
-    <link rel="stylesheet" href="{{ asset('usrAdminStyle/assets/off/pe-icon-7-stroke.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('usrAdminStyle/assets/off/flag-icon.min.css') }}">
-    
-    <link rel="stylesheet" href="{{ asset('usrAdminStyle/assets/css/cs-skin-elastic.css') }}">
-    <link rel="stylesheet" href="{{ asset('usrAdminStyle/assets/css/style.css') }}">
-
-    <script type="text/javascript" src=" {{ asset('usrAdminStyle/assets/off/html5shiv.min.js') }}"></script>
-    <link href="{{ asset('usrAdminStyle/assets/off/chartist.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('usrAdminStyle/assets/off/jqvmap.min.css') }}" rel="stylesheet">
-
-    <link href="{{ asset('usrAdminStyle/assets/off/weather-icons.css') }}" rel="stylesheet" />
-    <link href="{{ asset('usrAdminStyle/assets/off/fullcalendar.min.css') }}" rel="stylesheet" />
-
-    <script src="{{ asset('js/app.js') }}" defer></script>
     <style>
         nav ul a .iconP{
             margin: 0 4px 0 0px;
@@ -71,92 +44,74 @@
     </style>
 </head>
 <body class="bg-white">
-        <!-- Left Panel -->
-    <aside id="left-panel" class="left-panel">
-            <nav class="navbar navbar-expand-sm navbar-default">
-                <div id="main-menu" class="main-menu collapse navbar-collapse">
-                    <ul class="nav navbar-nav">
-                        <li class="">
-                            <a href="{{ url('/usrcrud') }}"><i class="menu-icon fa fa-columns"></i>Dashboard </a>
-                        </li>
-                        <li class="menu-title">Property</li>
-                        <li class="menu-item">
-                            <a href="{{ url('addProp') }}" class="" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-plus"></i>Add Property Listing</a>
-                            <a href="{{ url('editProp') }}" class="" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-edit"></i>Edit Property Listing</a>
-                        </li>
-    
-                        <li class="menu-title">Listings</li>
-                        <li class="menu-item">
-                            <a href="#" class="" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-eye"></i>Your Property Listing</a>
-                            <a href="#" class="" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-book"></i>Booked Property Listing</a>
-                        </li>
-                        
-                        <li class="menu-title">Wishlists</li>
-                        <li class="menu-item">
-                            <a href="#" class="" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-list"></i>Your Wishlist</a>
-                        </li>
-    
-                        <li class="menu-title">User Pages</li>
-                        <li class="menu-item">
-                            <a href="#" class="" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-home"></i>Home page</a>
-                        </li>
-    
-                    </ul>
-                </div><!-- /.navbar-collapse -->
-            </nav>
-        </aside>
-    <div id="right-panel" class="right-panel">
-            <!-- Header-->
-            <header id="header" class="header">
-                <div class="top-left">
-                    <div class="navbar-header">
-                        <a class="navbar-brand text-primary font-weight-bold" style="" href="{{ url('/') }}">
-                        {{ config('APP.NAME', 'HajurKo Property') }}
-                        </a>
-                        <a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a>
-                    </div>
-                </div>
-
-                <div class="top-right">
-                    <div class="header-menu">
-                        <div class="header-left">
-                            
+    <div class="container-fluid bg-light">
+    <div class="container bg-light">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand text-primary font-weight-bold"  href="{{ url('/') }}">
+                    <img class="img-Logo" src="{{ asset('images/logoHKP.png') }}" alt="LogoOfHouse"> {{ config('APP.NAME', 'HajurKo Property') }}
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapseDIv" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="collapseDIv">
+                        <!-- Left Side Of Navbar -->
+                        <div class="nav text-center collapse navbar-collapse font-weight-bold" id="collapseDIv">
+                            <ul class="navbar-nav" id="menuS">
+                                <li class="nav-item"><a href="/"  class="nav-link icon home"> <p class="iconP">Home</p></a></li>
+                            </ul>
                         </div>
-                        
+                        <!-- Right Side Of Navbar -->
+                        <ul class="navbar-nav ml-auto">
                         <div class="dropdown">
-                            <div class="user-area dropdown float-right">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                     <i class="fas fa-caret-down ml-2"></i>
+                            <!-- Authentication Links -->
+                            <div class="d-flex align-items-center">
+   
+                            @guest
+                                <a class="nav-link dropdown-toggle text-dark font-weight-bold" href="#" id="navbarDropdown" data-target="#new" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="far fa-user"></i>                   
                                 </a>
-    
-                                <div class="user-menu dropdown-menu" id="new">
-                                    <a class="nav-link" href="#"><i class="fa fa-user mr-2"></i>My Profile</a>
-    
-                                    <a class="nav-link" href="#"><i class="fa fa-user mr-2"></i>Notifications </a> {{--<span class="count">13</span>--}}
-
-                                    <a class="nav-link" href="{{ route('logout') }}"
-                                        onclick="event.preventDefault();
-                                        document.getElementById('logout-form').submit();">
-                                       <i class="fa fa-power-off mr-2"></i> {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-    
-                                </div>
                             </div>
-                        </div>
+                            @if (Route::has('register'))
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown" id="new">
+                                <a class=" dropdown-item nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            <div class="dropdown-divider"></div>
+                                <a class="dropdown-item nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            </div>
+                                @endif
+                            @else
+                                <div class="nav-item dropdown">
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                        {{ Auth::user()->fullname }} <span class="caret"></span>
+                                    </a>
+    
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="{{ route('logout') }}"
+                                           onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();">
+                                            {{ __('Logout') }}
+                                        </a>
+    
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            @csrf
+                                        </form>
+    
+                                        <a class="dropdown-item" href="{{ url('profile',Auth::user()->id) }}">{{ _('Edit Profile') }}</a> 
+                                        <div class="dropdown-divider"></div>                                   
+                                        <a class="dropdown-item" href="/listingsyour">{{ _('Your property') }}</a>
+                                    </div>
+                                </div>
+                            @endguest
+                        </ul>
                     </div>
                 </div>
-            </header>
-        
-        {{-- header --}}
+            </nav>
+              </div>
+            </div>
         <!-- Content -->
         <div class="content">
             @yield('uadContent')
         </div>
-          <!-- /.content -->
+        <!-- /.content -->
         <!-- Footer -->
         <footer class="page-footer bg-light" style="margin-top: 70px;">
             <div class="footer-copyright text-center text-black-50 py-3" style="background-color: #E8EAED;">
@@ -166,11 +121,5 @@
         </footer>
         <!-- Footer -->
     </div>
-    <!-- Scripts -->
-    <script src="{{ asset('usrAdminStyle/assets/js/off/jquery.min.js') }}"></script>
-    <script src="{{ asset('usrAdminStyle/assets/js/off/popper.min.js') }}"></script>
-    <script src="{{ asset('usrAdminStyle/assets/js/off/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('usrAdminStyle/assets/js/off/jquery.matchHeight.min.js') }}"></script>
-    <script src="{{ asset('usrAdminStyle/assets/js/main.js') }}"></script>
 </body>
 </html>

@@ -72,6 +72,6 @@ Route::get('/listings',function(){
 Route::get('/listings','listingController@listProp');
 
 // Admin part
-Route::get('/admin', function(){
-    return view('adminJob.mainApannel');
+Route::get('dashboard', function(){
+    return view('adminJob.dashboard'); // ues ->middleware('auth')
 });

@@ -140,7 +140,7 @@
                                     <div class="dropdown-divider"></div>                                   
                                     <a class="dropdown-item" href="/listingsyour">{{ _('Your property') }}</a>
                                     @if(Auth::user()->uType == 1)
-                                    <a class="dropdown-item" href="{{ url('admin')}}">{{ _('Admin Pannel') }}</a> 
+                                    <a class="dropdown-item" href="{{ url('dashboard')}}">{{ _('Admin Pannel') }}</a> 
                                     @endif
                                 </div>
                             </div>

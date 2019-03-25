@@ -9,6 +9,7 @@ use App\Rooms;
 use App\Proptypes;
 use App\Bookings;
 use App\Images;
+use App\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
