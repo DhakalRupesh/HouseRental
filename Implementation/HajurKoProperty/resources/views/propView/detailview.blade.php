@@ -140,8 +140,15 @@
 							<div class="col-md-4 col-sm-6">
 								<form action="">
 									@csrf
-									<input type="button" id="taxCalbtn" onclick="calTax()" class="btn btn-success pl-5  pr-5 p-2 pb-2 font-weight-bold" value="Calculate Tax">
-									<input type="text" id="resBox" name="kitchen" class="form-control mt-2" placeholder="Result" readonly>
+									@php
+										
+										$total = ($details->waterP + $details->electricP + $details->totPrice) * 10 / 100;
+
+									@endphp
+									<h4 class="text-info"> Your annual tax</h4>
+									<h6 class="">{!! $total !!} / Year</h6>
+									<button class="btn text-danger" type=""><i class="fa fa-print p-1"></i></button>
+									
 								</form>
 							</div>
 						
@@ -210,21 +217,8 @@
 
 <script type="text/javascript" lang="javascript"> 
 
-// window.onload = function(){
-// 	document.getElementById("btnU").style.display="none";
-// }
-// function newFunction(){
-// 	document.getElementById("btnB").style.display="none";
-// 	document.getElementById("btnU").style.display="block";
-// }
-// function newFunction1(){
-// 	document.getElementById("btnU").style.display="none";
-// 	document.getElementById("btnB").style.display="block";
-// }
-
 function newFunction(){
 	document.getElementById("btnB{!! $details->id !!}").hidden=true;
-	
 }
 
 calTax = function()
@@ -235,7 +229,7 @@ calTax = function()
 
 	var total = parseInt(val1) + parseInt(val2) + parseInt(val3);
 
-	document.getElementById('resBox').value = parseFloat(val1);
+	document.getElementById('resBox').value =  document.getElementById('p1');
 }
 
 </script>	

@@ -26,9 +26,9 @@
         <div class="input-group">
             <div class="input-group-addon"></div>
             <select class="form-control" name="propType" required>
-                <option value="">new</option>
-                <option value="">new1</option>
-                <option value="">naya</option>
+              @foreach($pt as $pts)
+                <option value={{$pts->id}}>{{$pts->propertyType}}</option>
+              @endforeach
             </select>
         </div>
     </div>
@@ -89,6 +89,13 @@
       </div>
     </div>
   @endforeach
+  </div>
+</div>
+<div class="container pt-5 align-items-center">
+  <div class="row">
+    <div class="col-lg-6"></div>
+    <div class="col-lg-4"></div>
+    <div class="col-lg-2"><p class="">{!! $list->links() !!}</p></div>
   </div>
 </div>
 @endsection

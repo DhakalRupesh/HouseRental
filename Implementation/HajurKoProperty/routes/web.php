@@ -70,6 +70,7 @@ Route::get('/listings',function(){
     return view('propView.listings');
 });
 Route::get('/listings','listingController@listProp');
+// Route::get('/listings','listingController@getPropType');
 
 // Admin part
 Route::get('dashboard', function(){

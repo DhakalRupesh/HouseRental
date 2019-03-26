@@ -59,6 +59,11 @@ class listingController extends Controller
         
     }
 
+    public function getPropType()
+    {
+       
+    }
+
     public function listProp()
     {
         if(Auth::check()){
@@ -72,16 +77,18 @@ class listingController extends Controller
             return view('propView.listings')->with('list',$usrProp);
         }
         else{
-            $usrProp = DB::table('properties')
+            $list = DB::table('properties')
             ->join('facilities','properties.id','=','facilities.propID')
             ->join('rooms','properties.id','=','rooms.propID')
-            // ->paginate('6')
-            ->get();
-
-            return view('propView.listings')->with('list',$usrProp);
+            ->paginate('6');
+            // ->get();
+            $pt = new Proptypes();
+            $pt = $pt->get();
+ 
+            // return view('propView.listings')->with('list',$usrProp);
+            return view('propView.listings', compact(['list','pt']));
         }
     }
-
 
     /**
      * Show the form for editing the specified resource.
