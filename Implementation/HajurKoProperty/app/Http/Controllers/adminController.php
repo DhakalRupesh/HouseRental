@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use App\Proptypes;
+use Auth;
 
 class adminController extends Controller
 {
@@ -14,6 +17,15 @@ class adminController extends Controller
     public function index()
     {
         //
+    }
+
+    public function addPropType(Request $request)
+    {
+        $propType = new Proptypes(); 
+        $propType->propertyType = $request->propType;
+        $propType->save();
+
+        return redirect()->back()->with('success', 'Property type added');
     }
 
     /**

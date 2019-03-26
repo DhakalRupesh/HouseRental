@@ -57,7 +57,7 @@
                         <!-- Left Side Of Navbar -->
                         <div class="nav text-center collapse navbar-collapse font-weight-bold" id="collapseDIv">
                             <ul class="navbar-nav" id="menuS">
-                                <li class="nav-item"><a href="/"  class="nav-link icon home"> <p class="iconP">Home</p></a></li>
+                            <li class="nav-item"><a href="{!! URL::to('dashboard') !!}"  class="nav-link icon home"> <p class="iconP">Home</p></a></li>
                             </ul>
                         </div>
                         <!-- Right Side Of Navbar -->

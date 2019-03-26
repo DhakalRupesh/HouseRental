@@ -73,6 +73,11 @@ Route::get('/listings','listingController@listProp');
 // Route::get('/listings','listingController@getPropType');
 
 // Admin part
-Route::get('dashboard', function(){
+Route::get('/dashboard', function(){
     return view('adminJob.dashboard'); // ues ->middleware('auth')
 });
+//propType
+Route::get('/propVA', function(){
+    return view('adminJob.propertyVA');
+});
+Route::post('/propVA','adminController@addPropType');

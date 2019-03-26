@@ -56,8 +56,6 @@ class usrcrudController extends Controller
             
         ]);
 
-        $propType = new Proptypes();
-
         $prop = new Properties();
         $prop->propFor = $request->propFor;  
         $prop->propDistrict = $request->district;
