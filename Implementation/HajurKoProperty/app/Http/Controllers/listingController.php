@@ -59,7 +59,7 @@ class listingController extends Controller
         
     }
 
-    public function getPropType()
+    public function getSelProp()
     {
        
     }
@@ -67,25 +67,26 @@ class listingController extends Controller
     public function listProp()
     {
         if(Auth::check()){
-            $usrProp = DB::table('properties')
+            $list = DB::table('properties')
             ->join('facilities','properties.id','=','facilities.propID')
             ->join('rooms','properties.id','=','rooms.propID')
             ->where('user_id', '!=' ,Auth::User()->id)
-            // ->paginate('6')
-            ->get();
+            ->paginate('6');
 
-            return view('propView.listings')->with('list',$usrProp);
+            $pt = new Proptypes();
+            $pt = $pt->get();
+ 
+            return view('propView.listings', compact(['list','pt']));
         }
         else{
             $list = DB::table('properties')
             ->join('facilities','properties.id','=','facilities.propID')
             ->join('rooms','properties.id','=','rooms.propID')
             ->paginate('6');
-            // ->get();
+
             $pt = new Proptypes();
             $pt = $pt->get();
- 
-            // return view('propView.listings')->with('list',$usrProp);
+
             return view('propView.listings', compact(['list','pt']));
         }
     }

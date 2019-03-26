@@ -53,38 +53,38 @@
 
         <div class="card-body">
           <div class="text-center feature-title">
-            <h3 class="text-info pb-2">Price: 20,00,000</h3>
-            <i class="fa fa-map-marker-alt"></i><small class="ml-1"></small>
+            <h3 class="text-info pb-2">Price: {!! $lists->totPrice !!}</h3>
+            <i class="fa fa-map-marker-alt"></i><small class="ml-1">{!! $lists->propLocation !!}</small>
           </div>
         </div>
         <div class="room-info-warp">
           <div class="room-info">
             <div class="rf-left">
-              <p><i class="fa fa-utensils"></i>10 Kitchen</p>
-              <p><i class="fa fa-bed"></i>10 Bedrooms</p>
+              <p><i class="fa fa-utensils"></i>{!! $lists->kitchen !!} Kitchen</p>
+              <p><i class="fa fa-bed"></i>{!! $lists->bedRoom !!} Bedrooms</p>
             </div>
             <div class="rf-right">
-              <p><i class="fa fa-couch"></i>10 Living Room</p>
-              <p><i class="fa fa-bath"></i>10 Bathrooms</p>
+              <p><i class="fa fa-couch"></i>{!! $lists->livingRoom !!} Living Room</p>
+              <p><i class="fa fa-bath"></i>{!! $lists->tBathroom !!} Bathrooms</p>
             </div>	
           </div>
 
           <div class="room-info"> 
             <div>
               <div class="rf-left">
-                <p><i class="fa fa-motorcycle"></i>10 Bike </p>
-                <p><i class="fa fa-tint"></i>Yes Boaring </p>
+                <p><i class="fa fa-motorcycle"></i>{!! $lists->bikeP !!} Bike </p>
+                <p><i class="fa fa-tint"></i>{!! $lists->waterB !!} Boaring </p>
               </div>
               <div class="rf-right">
-                <p><i class="fa fa-car"></i>10 Car</p>
-                <p><i class="fa fa-tint"></i>Yes Drinking  </p>
+                <p><i class="fa fa-car"></i>{!! $lists->carP !!} Car</p>
+                <p><i class="fa fa-tint"></i>{!! $lists->waterD !!} Drinking  </p>
               </div>
             </div>	
           </div>
         </div>
               
-        <a class="bg-info text-center p-2 detailV" href="" style="border-top: 1px solid #ebebeb;"> 
-            <h4 class="text-white pt-1"> View Details </h4>
+        <a class="bg-info text-center p-2 detailV" href="{{ URL::to('/propDetail', $lists->id) }}" style="border-top: 1px solid #ebebeb;"> 
+          <h4 class="text-white pt-1"> View Details </h4>
         </a>
       </div>
     </div>

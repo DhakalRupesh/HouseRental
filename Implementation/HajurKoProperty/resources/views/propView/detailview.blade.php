@@ -86,7 +86,7 @@
 					<div class="single-list-content">
 						<div class="row">
 							<div class="col-xl-8 sl-title">
-							<h2>Rs.{!! $details->totPrice !!} /-</h2>
+							<h2>Price: {!! $details->totPrice !!} /-</h2>
 								<p><i class="fa fa-map-marker-alt"></i>{!! $details->propLocation !!}</p>
 								<small>District: {!! $details->propDistrict !!}</small>
 							</div>
@@ -195,12 +195,13 @@
 								<div class="sale-notic">{!! $sides->propFor !!}</div>
 								</div>
 								<div class="rp-info">
-									<h5>RS. {!! $sides->totPrice !!} /-</h5>
+									<h5>Price: {!! $sides->totPrice !!} </h5>
 									<p><i class="fa fa-map-marker-alt"><span class="text-dark pl-1">{!! $sides->propLocation !!}</span></i></p>
 									<p><span class="text-dark pl-1">{!! $sides->suitableFor !!}</span></p>
-									<p><span class="text-dark pl-1" value="{!! $sides->suitableFor !!}">{!! $sides->suitableFor !!}</span></p>									
 								</div>
-								<a href="#" class="rp-price">View Details</a>
+								<a class="rp-price" href="{{ URL::to('/propDetail', $sides->id) }}"> 
+									View Details
+								</a>
 							</div>										
 						@endforeach
 					</div>

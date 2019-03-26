@@ -25,7 +25,7 @@ Route::get('/profile/{id}','userController@profileIndex');
 // Profile update
 Route::put('/profile/{id}','userController@update');
 //Multiple authentication
-Route::get('/admin','HomeController@admin')->middleware('admin');
+Route::get('/admin','HomeController@admin');
 //userPannel
 Route::get('/usrpannel',function(){
     return view('propcrud.mainPannel');

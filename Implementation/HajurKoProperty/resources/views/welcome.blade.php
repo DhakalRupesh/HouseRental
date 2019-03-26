@@ -207,7 +207,7 @@
             <div class="banner_content">
                 <h5>We Believe in making your dream come true</h5>
                 <h3>Find Your Dream Home</h3>
-                <a class="main_btn " href="#">Learn More</a>
+            <a class="main_btn " href="{!! URL::to('/about') !!}">Learn More</a>
             </div>
         </div>
     </div>
@@ -254,38 +254,38 @@
 
         <div class="card-body">
           <div class="text-center feature-title">
-            <h3 class="text-info pb-2">Price: 20,00,000</h3>
-            <i class="fa fa-map-marker-alt"></i><small class="ml-1">{{ $welprops->propLocation }}</small>
+            <h3 class="text-info pb-2">Price: {!! $welprops->totPrice !!}</h3>
+            <i class="fa fa-map-marker-alt"></i><small class="ml-1">{!! $welprops->propLocation !!}</small>
           </div>
         </div>
         <div class="room-info-warp">
           <div class="room-info">
             <div class="rf-left">
-              <p><i class="fa fa-utensils"></i>10 Kitchen</p>
-              <p><i class="fa fa-bed"></i>10 Bedrooms</p>
+              <p><i class="fa fa-utensils"></i>{!! $welprops->kitchen !!}Kitchen</p>
+              <p><i class="fa fa-bed"></i>{!! $welprops->bedRoom !!} Bedrooms</p>
             </div>
             <div class="rf-right">
-              <p><i class="fa fa-couch"></i>10 Living Room</p>
-              <p><i class="fa fa-bath"></i>10 Bathrooms</p>
+              <p><i class="fa fa-couch"></i>{!! $welprops->livingRoom !!}Living Room</p>
+              <p><i class="fa fa-bath"></i>{!! $welprops->tBathroom !!} Bathrooms</p>
             </div>	
           </div>
 
           <div class="room-info"> 
             <div>
               <div class="rf-left">
-                <p><i class="fa fa-motorcycle"></i>10 Bike </p>
-                <p><i class="fa fa-tint"></i>Yes Boaring </p>
+                <p><i class="fa fa-motorcycle"></i>{!! $welprops->bikeP !!} Bike </p>
+                <p><i class="fa fa-tint"></i>{!! $welprops->waterB !!} Boaring </p>
               </div>
               <div class="rf-right">
-                <p><i class="fa fa-car"></i>10 Car</p>
-                <p><i class="fa fa-tint"></i>Yes Drinking  </p>
+                <p><i class="fa fa-car"></i>{!! $welprops->carP !!} Car</p>
+                <p><i class="fa fa-tint"></i>{!! $welprops->waterD !!} Drinking  </p>
               </div>
             </div>	
           </div>
 
         </div>
-              
-    <a class="bg-info text-center p-2 detailV" href="{{ URL::to('/propDetail', $welprops->id) }}" style="border-top: 1px solid #ebebeb;"> 
+         
+        <a class="bg-info text-center p-2 detailV" href="{{ URL::to('/propDetail', $welprops->id) }}" > 
             <h4 class="text-white pt-1"> View Details </h4>
         </a>
       </div>
@@ -317,6 +317,11 @@
                 <h5>Office buldings/Flats</h5>
             </div>
         </div>
+    </div>
+</div>
+<div class="container"> 
+    <div class="vCount">
+        <p class="text-info"></p>
     </div>
 </div>
 @endsection 

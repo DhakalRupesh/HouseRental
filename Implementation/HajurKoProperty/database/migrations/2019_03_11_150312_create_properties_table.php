@@ -22,8 +22,10 @@ class CreatePropertiesTable extends Migration
             $table->string('suitableFor',60)->nullable();
             $table->float('waterP')->nullable();
             $table->float('electricP')->nullable();
-            $table->float('totPrice');
+            $table->double('totPrice');
             $table->text('description',255)->nullable();
+            $table->string('approval')->default('unapproved');
+            $table->string('status')->default('unbooked');
 
             $table->integer('propType_id')->unsigned();
             $table->foreign('propType_id')->references('id')->on('proptypes');
