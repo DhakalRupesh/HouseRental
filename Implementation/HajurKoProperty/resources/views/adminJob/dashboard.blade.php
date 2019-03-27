@@ -25,16 +25,16 @@
             <p class="text-center"><small>Add & Delete Admin</small></p>
         </a>
         <a class="col-lg-1 col-md-4"></a>
-        <a class="col-lg-3 col-md-4 bg-info text-white mt-3 mb-3 pt-3 pb-3 controls" href="{!! URL::to('/propVA') !!}"  style="width: 22rem;">
+        <a class="col-lg-3 col-md-4 bg-info text-white mt-3 mb-3 pt-3 pb-3 controls" href="{!! URL::to('/propVA') !!}"style="width: 22rem;">
             <h4 class="text-center"><img src="{!! asset('images/blog.png') !!}" alt="sportlogo"></h4>
             <h4 class="text-center">Property</h4>
             <p class="text-center"><small>Verify & Approve</small></p>              
         </a>
         <a class="col-lg-1 col-md-4"></a>
-        <a class="col-lg-3 col-md-4 bg-info  mt-3 mb-3 pt-3 pb-3 controls" style="width: 22rem;">
-            <h4 class="text-center"><img src="{!! asset('images/man1.png') !!}" alt="memberlogo"></h4>
+        <a class="col-lg-3 col-md-4 bg-info text-white mt-3 mb-3 pt-3 pb-3 controls" href="{!! URL::to('/adminQueries') !!}" style="width: 22rem;">
+            <h4 class="text-center"><img src="{!! asset('images/question.png') !!}" alt="memberlogo"></h4>
             <h4 class="text-center">Admin</h4>
-            <p class="text-center"><small>Admin profile update</small></p>              
+            <p class="text-center"><small>Queries</small></p>              
         </a>
      </div> 
 </div>

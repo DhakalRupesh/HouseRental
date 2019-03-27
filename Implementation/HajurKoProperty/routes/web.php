@@ -83,3 +83,7 @@ Route::get('/propVA', function(){
 Route::post('/propVA','adminController@addPropType');
 Route::get('/propVA','adminController@requestedProp');
 Route::put('/propVA/{id}','adminController@reqAccept');
+// queries admin
+Route::get('/adminQueries', function(){
+    return view('queries.adminQueriesView');
+});

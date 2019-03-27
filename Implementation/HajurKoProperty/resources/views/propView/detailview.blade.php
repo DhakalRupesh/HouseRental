@@ -147,7 +147,7 @@
 									@endphp
 									<h4 class="text-info"> Your annual tax</h4>
 									<h6 class="">{!! $total !!} / Year</h6>
-									<button class="btn text-danger" type=""><i class="fa fa-print p-1"></i></button>
+									<button class="btn text-danger" onclick=print() type=""><i class="fa fa-print p-1"></i></button>
 									
 								</form>
 							</div>
@@ -177,6 +177,17 @@
 						</div>
 					</div>
 					
+					{{-- question regarding the property --}}
+					<div class="contact-form-card">
+						<h5>Ask question to owner?</h5>
+						<form action="" method="POST" enctype="multipart/form-data">
+							@csrf
+							<input type="text" placeholder="Question Title">
+							<textarea placeholder="Your question"></textarea>
+							<button class="bg-primary">SEND</button>
+						</form>
+					</div>
+
 					<div class="related-properties">
 						<h2>Related Property</h2>
 						@php
