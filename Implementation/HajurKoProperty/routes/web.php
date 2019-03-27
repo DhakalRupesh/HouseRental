@@ -81,3 +81,5 @@ Route::get('/propVA', function(){
     return view('adminJob.propertyVA');
 });
 Route::post('/propVA','adminController@addPropType');
+Route::get('/propVA','adminController@requestedProp');
+Route::put('/propVA/{id}','adminController@reqAccept');

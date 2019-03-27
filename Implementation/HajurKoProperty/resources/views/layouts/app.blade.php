@@ -137,10 +137,12 @@
                                     </form>
 
                                     <a class="dropdown-item" href="{{ url('profile',Auth::user()->id) }}">{{ _('Edit Profile') }}</a> 
-                                    <div class="dropdown-divider"></div>                                   
-                                    <a class="dropdown-item" href="/listingsyour">{{ _('Your property') }}</a>
+                                    <div class="dropdown-divider"></div>  
+                                    @if(Auth::user()->uType == 0)                                 
+                                        <a class="dropdown-item" href="/listingsyour">{{ _('Your property') }}</a>
+                                    @endif
                                     @if(Auth::user()->uType == 1)
-                                    <a class="dropdown-item" href="{{ url('dashboard')}}">{{ _('Admin Pannel') }}</a> 
+                                        <a class="dropdown-item" href="{{ url('dashboard')}}">{{ _('Admin Pannel') }}</a> 
                                     @endif
                                 </div>
                             </div>

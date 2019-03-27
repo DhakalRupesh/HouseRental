@@ -293,6 +293,7 @@
     @endforeach
   </div>
 </div>
+
 <div class="container-fluid bg-light mt-5 p-5">
     <div class="container">
         <div class="text-center pb-3">
@@ -319,12 +320,36 @@
         </div>
     </div>
 </div>
+
 <div class="container">
     <p class='text-center p-1'>VcOunt</p> 
 </div>
+
 <div class="container"> 
     <div class="vCount">
         <p class="text-info"></p>
+    </div>
+</div>
+
+<div class="container pt-4">
+    <div class="row">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-1"></div>
+        <div class="col-lg-6 p-2 bg-light">
+            <p class="text-justify pt-4 p-4">
+                Do You want to earn money? just by being admin of the page and manage our stuff.
+                but the consequences is you will be unable to add property listing as the normal user.
+                You should create seperate user account to do that.
+            </p>
+        </div>
+        <div class="col-lg-2 p-2 bg-secondary text-white">
+            <h5 class="text-center pt-4">Become a Admin ??</h5>
+            <form action="" method="post" class="text-center" enctype="multipart/form-data">
+                <button class="btn btn-primary mt-1"> Send Request </button>
+            </form>
+        </div>
+        <div class="col-lg-1"></div>
+        <div class="col-lg-1"></div>
     </div>
 </div>
 @endsection 

@@ -5,6 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Proptypes;
+use App\Properties;
+use App\Facilities;
+use App\Rooms;
+use App\Bookings;
+use App\Images;
 use Auth;
 
 class adminController extends Controller
@@ -26,6 +31,27 @@ class adminController extends Controller
         $propType->save();
 
         return redirect()->back()->with('success', 'Property type added');
+    }
+
+    public function requestedProp()
+    {
+        $propApproval = DB::table('users')
+        ->join('properties', 'users.id', '=', 'properties.user_id')
+        ->join('Facilities','Properties.id','=', 'Facilities.propID')
+        ->join('Rooms','Properties.id','=', 'Rooms.propID')
+        ->where('approval', '=', 'unapproved')
+        ->get();
+
+        return view('adminJob.propertyVA')->with('propApproval',$propApproval);
+    }
+
+    public function reqAccept($id)
+    {
+        $propApprovalAccept = Properties::find($id);
+
+        $propApprovalAccept->approval = 'approved';
+        $propApprovalAccept->save();
+        return redirect()->back()->with('success', 'Listing request accepted');
     }
 
     /**

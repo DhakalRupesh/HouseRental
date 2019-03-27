@@ -166,14 +166,6 @@ class usrcrudController extends Controller
      */
     public function edit($id)
     {
-        // $propedit =DB::table('proptypes')
-        // ->join('properties','proptypes.id', '=', 'properties.propType_id')
-        // ->join('facilities','properties.id','=', 'facilities.propID')
-        // ->join('rooms',     'properties.id','=', 'rooms.propID')
-        // ->join('images',    'properties.id','=', 'images.propID')->where('properties.id',$id)
-        // ->get();
-
-        // return view('propcrud.uandv', ['prop' => $propedit]);
 
         $prop=Proptypes::join('Properties','Proptypes.id', '=', 'Properties.propType_id')
         ->join('Facilities','Properties.id','=', 'Facilities.propID')

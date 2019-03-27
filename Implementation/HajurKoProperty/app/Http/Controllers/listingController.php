@@ -70,7 +70,8 @@ class listingController extends Controller
             $list = DB::table('properties')
             ->join('facilities','properties.id','=','facilities.propID')
             ->join('rooms','properties.id','=','rooms.propID')
-            ->where('user_id', '!=' ,Auth::User()->id)
+            ->where('user_id', '!=', Auth::User()->id)
+            ->where('approval', '=', 'approved')
             ->paginate('6');
 
             $pt = new Proptypes();
@@ -82,6 +83,7 @@ class listingController extends Controller
             $list = DB::table('properties')
             ->join('facilities','properties.id','=','facilities.propID')
             ->join('rooms','properties.id','=','rooms.propID')
+            ->where('approval', '=', 'approved')
             ->paginate('6');
 
             $pt = new Proptypes();
