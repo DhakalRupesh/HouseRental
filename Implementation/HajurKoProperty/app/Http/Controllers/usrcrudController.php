@@ -141,7 +141,8 @@ class usrcrudController extends Controller
     {
         $usrProp = DB::table('properties')
         ->join('facilities','properties.id','=','facilities.propID')
-        ->join('rooms','properties.id','=','rooms.propID')->where('user_id',Auth::User()->id)
+        ->join('rooms','properties.id','=','rooms.propID')
+        ->where('user_id',Auth::User()->id)
         ->get();
 
         return view('propcrud.editProp')->with('data',$usrProp);

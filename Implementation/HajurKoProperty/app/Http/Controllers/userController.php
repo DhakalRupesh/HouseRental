@@ -108,23 +108,32 @@ class userController extends Controller
     public function welcomeProp()
     {
         if(Auth::check()){
-            $usrProp = DB::table('properties')
+            $welprop = DB::table('properties')
             ->join('facilities','properties.id','=','facilities.propID')
             ->join('rooms','properties.id','=','rooms.propID')
             ->where('user_id', '!=' ,Auth::User()->id)
+            ->where('approval', '=', 'approved')
             ->limit('6')
             ->get();
 
-            return view('welcome')->with('welprop',$usrProp);
+            $pt = new Proptypes();
+            $pt = $pt->get();
+
+            return view('welcome', compact(['welprop','pt',]));
+
         }
         else{
-            $usrProp = DB::table('properties')
+            $welprop = DB::table('properties')
             ->join('facilities','properties.id','=','facilities.propID')
             ->join('rooms','properties.id','=','rooms.propID')
+            ->where('approval', '=', 'approved')
             ->limit('6')
             ->get();
 
-            return view('welcome')->with('welprop',$usrProp);
+            $pt = new Proptypes();
+            $pt = $pt->get();
+
+            return view('welcome', compact(['welprop','pt']));
         }
     }
 
@@ -137,32 +146,5 @@ class userController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function propOwner($id)
-    {
-      
-    }    
-
-    public function bookProp($id)
-    {
-        if(Auth::check()){
-            $propBook = new Bookings();
-
-            $date = date("Y-m-d");
-            // $time = strtotime("now");
-            $usID = Auth::user()->id;
-            $prID = $id;
-
-            $propBook->bookedDate = $date; 
-            // $propBook->bookedTime = $time; 
-            $propBook->user_id = $usID; 
-            $propBook->propID = $prID; 
-
-            $propBook->save();
-            return redirect()->back()->with('success', 'Property added to booked list');
-        }else{
-            return redirect('login')->with('success', 'Login to continue');
-        }
     }
 }

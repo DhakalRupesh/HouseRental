@@ -89,13 +89,9 @@
     
                         <li class="menu-title">Listings</li>
                         <li class="menu-item">
-                            <a href="#" class="" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-eye"></i>Your Property Listing</a>
-                            <a href="#" class="" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-book"></i>Booked Property Listing</a>
-                        </li>
-                        
-                        <li class="menu-title">Wishlists</li>
-                        <li class="menu-item">
-                            <a href="#" class="" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-list"></i>Your Wishlist</a>
+                            <a href="{{ url('listingsyour') }}" class="" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-eye"></i>Your Property Listing</a>
+                            <a href="{{ url('bookedListing') }}" class="" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-book"></i>Booked Property Listing</a>
+                            <a href="{{ url('otherBooked') }}" class="" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-list"></i>Booked by other</a>                   
                         </li>
     
                         <li class="menu-title">User Pages</li>
@@ -106,6 +102,18 @@
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </nav>
+            @if(session()->has('success'))
+            <div class="alert alert-success">
+                {{ session()->get('success') }}
+            </div>
+            @endif
+
+            @if(session()->has('fail'))
+            <div class="alert alert-danger">
+                {{ session()->get('fail') }}
+            </div>
+            @endif
+
         </aside>
     <div id="right-panel" class="right-panel">
             <!-- Header-->
@@ -154,7 +162,7 @@
         
         {{-- header --}}
         <!-- Content -->
-        <div class="content">
+        <div class="content bg-white">
             @yield('uadContent')
         </div>
           <!-- /.content -->

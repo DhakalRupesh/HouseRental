@@ -96,9 +96,9 @@
                                         </div>
                                         <div class="modal-body">
                                             <div class="form-inline">
-                                                <form action="" class="search-form">
+                                                <form action="/search_Result" class="search-form">
                                                     @csrf
-                                                    <input class="form-control" type="text" placeholder="Search ..." name="searchData" aria-label="Search">
+                                                    <input class="form-control" type="text" placeholder="Search Location only" name="searchData" aria-label="Search">
                                                     <button class="btn btn-info" type="submit"><i class="fa fa-search p-1"></i>Search</button>
                                                 </form>
                                             </div>
@@ -151,6 +151,18 @@
                 </div>
             </div>
         </nav>
+
+        @if(session()->has('success'))
+        <div class="alert alert-success">
+            {{ session()->get('success') }}
+        </div>
+        @endif
+    
+        @if(session()->has('fail'))
+        <div class="alert alert-danger">
+            {{ session()->get('fail') }}
+        </div>
+        @endif
 
         <main class="">
             @yield('content')
@@ -282,6 +294,12 @@
 
     </footer>
     <!-- Footer -->
-
+    <script>
+        window.setTimeout(function() {
+            $(".alert").fadeTo(500, 0).slideUp(500, function(){
+                $(this).remove(); 
+            });
+        }, 4000);
+    </script>
 </body>
 </html>

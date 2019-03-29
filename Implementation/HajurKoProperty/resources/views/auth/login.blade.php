@@ -25,23 +25,6 @@
 </style>
 
 @section('content')
-
-@if(session()->has('success'))
-<div class="alert alert-success">
-    {{ session()->get('success') }}
-</div>
-@endif
-
-@if($errors->any())
-<div class="alert alert-danger">
-    <ul class="list-unstyled">
-        @foreach($errors->all() as $error)
-            <li> {{ $error }}</li>
-        @endforeach
-    </ul>
-</div>
-@endif
-
 <div class="container mainc">
     <div class="row">
       <div class="col-lg-6 text-dark">

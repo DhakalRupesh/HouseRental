@@ -1,16 +1,5 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Route::get('/', function () {
     return view('welcome');
 });
@@ -56,7 +45,21 @@ Route::get('/propdetail',function(){
 });
 // detail view
 Route::get('/propDetail/{id}','detailController@detailProp');
-Route::post('/propDetail/{id}','userController@bookProp');
+
+// prop book
+Route::post('/propDetail/{id}','bookController@bookProp');
+Route::get('/bookedListing', function(){
+    return view('propView.bookedProp');   // change these code to controller later
+});
+Route::get('/bookedListing','bookController@getBooked');
+Route::get('/otherBooked',function(){
+    return view('propView.otherBooked');
+});
+Route::get('/otherBooked','bookController@getuserbooked');
+// book delete
+Route::delete('/bookedListing/{id}', 'bookController@delBooking');
+
+
 // for map 
 Route::get('/mapApi', function(){
     return view('mapApi.mapAdd');
@@ -87,3 +90,10 @@ Route::put('/propVA/{id}','adminController@reqAccept');
 Route::get('/adminQueries', function(){
     return view('queries.adminQueriesView');
 });
+
+//Search 
+Route::get('/search_Result',function(){
+    return view('search.quick');
+});
+Route::get('/search_Result','searchController@filterNunfiltered');
+Route::get('/customSearchReasult','searchCustomController@filterfiltered');

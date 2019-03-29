@@ -15,23 +15,6 @@
 </style>
 @section('content')
     <div class="container">   
-       
-
-        @if(session()->has('message'))
-            <div class="alert alert-success">
-                {{ session()->get('message') }}
-            </div>
-        @endif
-
-        @if($errors->any())
-            <div class="alert alert-danger">
-                <ul class="list-unstyled">
-                    @foreach($errors->all() as $error)
-                        <li> {{ $error  }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
         <h3 class="text-left text-info mt-3">Your Profile</h3>
         <small class="font-italic">View and edit your profile here</small>
         <hr>    
