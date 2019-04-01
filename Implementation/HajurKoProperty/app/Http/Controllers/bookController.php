@@ -20,23 +20,21 @@ class bookController extends Controller
     public function bookProp($id)
     {
         if(Auth::check()){
+            $usID = Auth::user()->id;
+            $book=Bookings::where('propID',$id)->where('user_id',$usID)->get();
             $propBook = new Bookings();
 
             $date = date("Y-m-d");
             // $time = strtotime("now");
-            $usID = Auth::user()->id;
             $prID = $id;
 
             $propBook->bookedDate = $date; 
             // $propBook->bookedTime = $time; 
             $propBook->user_id = $usID; 
             $propBook->propID = $prID; 
-
-            $status = Properties::find($id);
-            $status->status = 'booked';
+            $propBook->status = 'booked';
         
             $propBook->save();
-            $status->save();
             return redirect()->back()->with('success', 'Property added to booked list');
         }else{
             return redirect('login')->with('success', 'Login to continue');

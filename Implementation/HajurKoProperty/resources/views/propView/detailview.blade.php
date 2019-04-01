@@ -80,20 +80,36 @@
 
 								<form action="{!! url('/propDetail',[$details->id])!!}" method="POST">
 									@csrf
-
-									@if (!$book->isEmpty())	
-										@foreach($book as $books)
-											@if($books->user_id== Auth::user()->id && $books->propID==$details->id && $books->status=="unbooked")
-											<button type="submit" id="btnU" onclick="newFunction1()" class="btn btn-danger pl-5 pr-5 pt-3 pb-3 font-weight-bold">Unbook</button>
-											
-											@else 
-											<button type="submit"  id="btnB{!! $details->id !!}" onclick="newFunction()" name="book{!! $details->id !!}" class="btn btn-success pl-5 pr-5 pt-3 pb-3 font-weight-bold">Book Now</button>
-											@endif
-										@endforeach
+									@if(Auth::check())
+										@if(App\Bookings::where('user_id',Auth::user()->id)->count()>0)
+										{{-- check user has booked or not --}}
+											@foreach ($books as $book)	
+													{{--remove button  --}}
+													
+													@if($book->user_id == Auth::user()->id and $book->propID == $details->id)
+														@if($book->status == "booked")	
+														<button type="submit" id="btnU" onclick="newFunction1()" class="btn btn-danger pl-5 pr-5 pt-3 pb-3 font-weight-bold">Unbook</button>
+														@break;
+														@else
+														<button type="submit"  id="btnB" onclick="newFunction()" name="book" class="btn btn-success pl-5 pr-5 pt-3 pb-3 font-weight-bold">Book f Now</button>
+														@endif
+{{-- 														
+													@elseif($book->user_id == Auth::user()->id and $book->propID != $details->id)
+													<button type="submit"  id="btnB" onclick="newFunction()" name="book" class="btn btn-success pl-5 pr-5 pt-3 pb-3 font-weight-bold">Book Now</button>
+													@break --}}
+													
+													@endif
+													
+													@endforeach
+							
+										@else
+										{{-- Delte --}}
+										<button type="submit"  id="btnB" onclick="newFunction()" name="book" class="btn btn-success pl-5 pr-5 pt-3 pb-3 font-weight-bold">Book Now</button>									
+										@endif			
 									@else
-										<button type="submit"  id="btnB{!! $details->id !!}" onclick="newFunction()" name="book{!! $details->id !!}" class="btn btn-success pl-5 pr-5 pt-3 pb-3 font-weight-bold">Book Now</button>
+									<button type="submit"  id="btnB" onclick="newFunction()" name="book" class="btn btn-success pl-5 pr-5 pt-3 pb-3 font-weight-bold">Book Now</button>
 									@endif
-
+										
 								</form>
 							</div>
 						</div>
@@ -126,10 +142,8 @@
 							<div class="col-md-4 col-sm-6">
 								<form action="">
 									@csrf
-									@php
-										
+									@php		
 										$total = ($details->waterP + $details->electricP + $details->totPrice) * 10 / 100;
-
 									@endphp
 									<h4 class="text-info"> Your annual tax</h4>
 									<h6 class="">{!! $total !!} / Year</h6>
@@ -166,9 +180,9 @@
 					{{-- question regarding the property --}}
 					<div class="contact-form-card">
 						<h5>Ask question to owner?</h5>
-						<form action="" method="POST" enctype="multipart/form-data">
+						<form action="{!! '/propDetail'!!}" method="POST" enctype="multipart/form-data">
 							@csrf
-							<input type="text" placeholder="Question Title">
+							<input type="quesTitle" placeholder="Question Title">
 							<textarea placeholder="Your question"></textarea>
 							<button class="bg-primary">SEND</button>
 						</form>

@@ -255,6 +255,7 @@
     @foreach($welprop as $welprops)
     <div class="col-lg-4 col-md-6 mt-5"  style="">
       <div class="card shadow" style="width: 22rem;">
+        
         <img class="card-img-top" src="images/hs.jpg" alt="Card image cap">
         <div class="topText top-right text-white"><i class="fa fa-plus"></i></div>
 

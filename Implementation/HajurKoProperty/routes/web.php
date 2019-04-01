@@ -27,9 +27,7 @@ Route::get('/listingsyour',function(){
 })->middleware('auth');
 
 //add prop 
-Route::get('/addProp',function(){
-    return view('propcrud.addProp');
-})->middleware('auth');
+Route::get('/addProp',function(){ return view('propcrud.addProp'); })->middleware('auth');
 Route::post('/addProp','usrcrudController@store'); // insert property
 Route::get('/listingsyour','usrcrudController@displayProp')->middleware('auth'); // edit quick view
 Route::get('/editProp/{id}','usrcrudController@edit')->middleware('auth');// edit view by id

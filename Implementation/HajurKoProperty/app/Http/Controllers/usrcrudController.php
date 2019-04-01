@@ -14,7 +14,6 @@ use Illuminate\Http\Request;
 
 class usrcrudController extends Controller
 {
-    protected $file_dir = "uploads/files";
     /**
      * Display a listing of the resource.
      *
@@ -94,36 +93,24 @@ class usrcrudController extends Controller
         $room->totRooms = $request->totRoom;        
         $room->propID = $pid;
         $room->save();
-        
-        // do image via array
-        $img = new Images();
-        if (request()->hasFile('img1')) {
-            $file_name = $this->fileUpload(request()->file('img1'), $this->file_dir);
-            $img->img1 = $file_name;
-            $img->propID = $pid;
-        }  
-        
-        if (request()->hasFile('img2')) {
-            $file_name = $this->fileUpload(request()->file('img2'), $this->file_dir);
-            $img->img2 = $file_name;
-            $img->propID = $pid;
-        } 
-    
-        if (request()->hasFile('img3')) {
-            $file_name = $this->fileUpload(request()->file('img3'), $this->file_dir);
-            $img->img3 = $file_name;
-            $img->propID = $pid;
-        }  
-   
-        if (request()->hasFile('img4')) {
-            $file_name = $this->fileUpload(request()->file('img4'), $this->file_dir);
-            $img->img4 = $file_name;
-            $img->propID = $pid;
-        }    
-          
-        $img->save();
 
-        return redirect()->back()->with('success', 'Property Listed successfully');
+        if($request->hasFile('files'))
+        {
+            $image_dir = "uploads/files";
+            $newFile = $request->file('files');
+            foreach($newFile as $newFiles)
+            {
+                $extension=$newFiles->getClientOriginalExtension();
+                $fileName = rand(100,999999).time().'.'.$extension;
+                $newFiles->move($image_dir,$fileName);
+                $fileModel = new Images();
+                $fileModel->img1 = $fileName;
+                $fileModel->propID = $pid;
+                $fileModel->save();
+            } 
+        }
+
+        return redirect('addProp')->with('success', 'Property Listed successfully');
     }
 
     public function getPropType()
@@ -239,7 +226,14 @@ class usrcrudController extends Controller
      */
     public function destroy($id)
     {
+        $image_dir = "uploads/files";
         $propdel = Properties::find($id);
+
+        $images = DB::table('images')->select('id')->where('propID','=',$id);
+        if($propdel->img1 && app('files')->exists($this->$image_dir. '/' . $propdel->img1)){
+            app('files')->delete($this->$image_dir. '/' . $propdel->img1);
+        }
+
         $propdel->delete();
         return redirect()->back()->with('success', 'Property Deleted Syccessfully!!');
     }

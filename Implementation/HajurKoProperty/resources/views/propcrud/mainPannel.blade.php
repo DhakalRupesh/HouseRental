@@ -100,20 +100,9 @@
                         </li>
     
                     </ul>
-                </div><!-- /.navbar-collapse -->
+                </div>
+                <!-- /.navbar-collapse -->
             </nav>
-            @if(session()->has('success'))
-            <div class="alert alert-success">
-                {{ session()->get('success') }}
-            </div>
-            @endif
-
-            @if(session()->has('fail'))
-            <div class="alert alert-danger">
-                {{ session()->get('fail') }}
-            </div>
-            @endif
-
         </aside>
     <div id="right-panel" class="right-panel">
             <!-- Header-->

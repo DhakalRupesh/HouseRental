@@ -129,7 +129,7 @@ class userController extends Controller
             ->where('approval', '=', 'approved')
             ->limit('6')
             ->get();
-
+            
             $pt = new Proptypes();
             $pt = $pt->get();
 

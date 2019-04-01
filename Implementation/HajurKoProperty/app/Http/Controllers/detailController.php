@@ -29,6 +29,7 @@ class detailController extends Controller
     public function detailProp(Request $request, $id)
     {   
 
+        
         // property details
         $detail = DB::table('proptypes')
         ->join('properties','properties.propType_id', '=', 'proptypes.id')
@@ -44,11 +45,11 @@ class detailController extends Controller
         ->get();
 
         //booking table
-        $book = DB::table('bookings')->get();
+        $books = DB::table('bookings')->get();
 
         //side view
     
-        return View('propView.detailview', compact(['detail','usrDetail','book']));
+        return View('propView.detailview', compact(['detail','usrDetail','books']));
     }
     /**
      * Show the form for creating a new resource.

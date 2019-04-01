@@ -27,7 +27,7 @@
 <div class="card mt-3">
             <div class="card-header h4 text-primary">Add your property</div>
                 <div class="card-body">
-                    <form action="" method="post" enctype="multipart/form-data">
+                    <form action="{!! url('addProp') !!}" method="post" enctype="multipart/form-data">
                     @csrf
                         <label class="mt-3"> <h4 class="text-danger font-weight-bold"><u>Property Details</u></h4> </label>
                         <div class="form-group">
@@ -225,9 +225,9 @@
                         <label class="mt-3"> <h4 class="text-danger font-weight-bold"><u>Images</u></h4></label><br>
                         <label> Select four Images</label>
                         <div class="form-row">
-                            <div class="col-lg-12 col-sm-12 col-11 main-section">
+                            <div class="col-lg-4 col-sm-4 col-11 main-section">
                                 <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                <input class="file" id="file-1" type="file" data-overwrite-initial="false" data-min-file-count="2" multiple="true">
+                                <input class="form-control" id="file-1" type="file" name="files[]" multiple="true">
                             </div>
                         </div>
 
