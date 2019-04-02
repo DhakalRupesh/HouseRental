@@ -18,7 +18,7 @@ class newTest extends TestCase
         $a = 1;
         $b = 3;
         $c = $a + $b;
-        $this->assertEquals(4,$c); 
+        $this->assertEquals($c,4); 
     }
     /**
      * A basic test example.
