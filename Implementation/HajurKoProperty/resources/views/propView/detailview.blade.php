@@ -88,10 +88,12 @@
 													
 													@if($book->user_id == Auth::user()->id and $book->propID == $details->id)
 														@if($book->status == "booked")	
-														<button type="submit" id="btnU" onclick="newFunction1()" class="btn btn-danger pl-5 pr-5 pt-3 pb-3 font-weight-bold">Unbook</button>
+														<form action="{!! url('/propDel',[$details->id])!!}" method="POST">
+															<button type="submit" id="btnU" onclick="newFunction1()" class="btn btn-danger pl-5 pr-5 pt-3 pb-3 font-weight-bold">Unbook</button>
+														</form>
 														@break;
 														@else
-														<button type="submit"  id="btnB" onclick="newFunction()" name="book" class="btn btn-success pl-5 pr-5 pt-3 pb-3 font-weight-bold">Book f Now</button>
+															<button type="submit"  id="btnB" onclick="newFunction()" name="book" class="btn btn-success pl-5 pr-5 pt-3 pb-3 font-weight-bold">Book Now</button>
 														@endif
 {{-- 														
 													@elseif($book->user_id == Auth::user()->id and $book->propID != $details->id)

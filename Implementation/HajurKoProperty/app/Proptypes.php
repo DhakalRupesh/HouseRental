@@ -17,4 +17,9 @@ class Proptypes extends Model
     {
         return $this->hasMany('App\Properties');
     }
+    //relationship with testing
+    // public function proTest()
+    // {
+    //     return $this->hasMany(PracticeTest::class, 'propertyType');
+    // }
 }

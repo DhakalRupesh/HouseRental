@@ -44,7 +44,7 @@
             @endphp
             <tr>
                 <th scope="row"> {!! $i !!} </th>
-                <td>{!! $otherBookeds->fullname !!}</td>
+                <td>{!! $otherBookeds->propLocation !!}</td>
                 <td>
                     <a href="" data-toggle="modal" data-target="#propDetail"><u>Property detail</u></a>  
                     <!-- Button trigger modal -->
@@ -59,34 +59,34 @@
                             </button>
                             </div>
                             <div class="modal-body">
-                                {{-- <span class="text-uppercase">Property For : </span>     <span>{!! $bookedProps->propFor !!}</span><br>
-                                <span class="text-uppercase">property District : </span><span>{!! $bookedProps->propDistrict !!}</span><br>
-                                <span class="text-uppercase">Size : </span>             <span>{!! $bookedProps->propSize !!}</span> <br>
-                                <span class="text-uppercase">suitable for : </span>     <span>{!! $bookedProps->suitableFor !!}</span> <br>
-                                <span class="text-uppercase">water price : </span>      <span>{!! $bookedProps->waterP !!}</span> <br>
-                                <span class="text-uppercase">electric price : </span>   <span>{!! $bookedProps->electricP !!}</span> <br>
-                                <span class="text-uppercase">total price : </span>      <span>{!! $bookedProps->totPrice !!}</span> <br>
+                                <span class="text-uppercase">Property For : </span>     <span>{!! $otherBookeds->propFor !!}</span><br>
+                                <span class="text-uppercase">property District : </span><span>{!! $otherBookeds->propDistrict !!}</span><br>
+                                <span class="text-uppercase">Size : </span>             <span>{!! $otherBookeds->propSize !!}</span> <br>
+                                <span class="text-uppercase">suitable for : </span>     <span>{!! $otherBookeds->suitableFor !!}</span> <br>
+                                <span class="text-uppercase">water price : </span>      <span>{!! $otherBookeds->waterP !!}</span> <br>
+                                <span class="text-uppercase">electric price : </span>   <span>{!! $otherBookeds->electricP !!}</span> <br>
+                                <span class="text-uppercase">total price : </span>      <span>{!! $otherBookeds->totPrice !!}</span> <br>
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <hr>
                                         <h5 class="font-weight-bold">FACILITIES</h5>
                                         <hr>
-                                        <span class="text-uppercase ">Bike parking : </span><span>{!! $bookedProps->propFor !!}</span><br>
-                                        <span class="text-uppercase ">car parking : </span><span>{!! $bookedProps->propFor !!}</span><br>
-                                        <span class="text-uppercase ">boaring water : </span><span>{!! $bookedProps->propFor !!}</span><br>
-                                        <span class="text-uppercase ">drinking water : </span><span>{!! $bookedProps->propFor !!}</span><br>
+                                        <span class="text-uppercase ">Bike parking : </span><span>{!! $otherBookeds->propFor !!}</span><br>
+                                        <span class="text-uppercase ">car parking : </span><span>{!! $otherBookeds->propFor !!}</span><br>
+                                        <span class="text-uppercase ">boaring water : </span><span>{!! $otherBookeds->propFor !!}</span><br>
+                                        <span class="text-uppercase ">drinking water : </span><span>{!! $otherBookeds->propFor !!}</span><br>
                                     </div>
-                                    <div class="col-sm-6">
+                                    {{-- <div class="col-sm-6">
                                         <hr>
                                         <h5 class="font-weight-bold">ROOM DETAILS</h5>
                                         <hr>
-                                        <span class="text-uppercase ">kitchen :  </span><span>{!! $bookedProps->kitchen !!}</span>  <br>
-                                        <span class="text-uppercase ">bed room : </span><span>{!! $bookedProps->bedRoom !!}</span>  <br>
-                                        <span class="text-uppercase ">living room : </span><span>{!! $bookedProps->livingRoom !!}</span>  <br>
-                                        <span class="text-uppercase ">toilet/ bathroom : </span><span>{!! $bookedProps->tBathroom !!}</span>  <br>
-                                        <span class="text-uppercase ">total rooms : </span><span>{!! $bookedProps->totRooms !!}</span>  <br>
-                                    </div>                              
-                                </div> --}}
+                                        <span class="text-uppercase ">kitchen :  </span><span>{!! $otherBookeds->kitchen !!}</span>  <br>
+                                        <span class="text-uppercase ">bed room : </span><span>{!! $otherBookeds->bedRoom !!}</span>  <br>
+                                        <span class="text-uppercase ">living room : </span><span>{!! $otherBookeds->livingRoom !!}</span>  <br>
+                                        <span class="text-uppercase ">toilet/ bathroom : </span><span>{!! $otherBookeds->tBathroom !!}</span>  <br>
+                                        <span class="text-uppercase ">total rooms : </span><span>{!! $otherBookeds->totRooms !!}</span>  <br>
+                                    </div>                               --}}
+                                </div>
                             </div>
                         </div>
                         </div>
@@ -100,19 +100,19 @@
                         <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                            {{-- <h5 class="modal-title" id="exampleModalLabel">{!! $bookedProps->fullname !!}'S Details</h5> --}}
+                            <h5 class="modal-title" id="exampleModalLabel">{!! $otherBookeds->fullname !!}'S Details</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                             </div>
-                            {{-- <div class="modal-body">
-                                <p><span class="text-uppercase font-weight-bold">FULL NAME : </span>{!! $bookedProps->fullname !!}</p>
-                                <p><span class="text-uppercase font-weight-bold">E-MAIL : </span> {!! $bookedProps->email !!} </p>
-                                <p><span class="text-uppercase font-weight-bold">DISTRICT : </span> {!! $bookedProps->district !!} </p>
-                                <p><span class="text-uppercase font-weight-bold">CITY : </span> {!! $bookedProps->city !!} </p>
-                                <p><span class="text-uppercase font-weight-bold">ADDRESS : </span> {!! $bookedProps->address !!} </p>
-                                <p><span class="text-uppercase font-weight-bold">MOBILE : </span> {!! $bookedProps->mobNo !!} </p>
-                            </div> --}}
+                            <div class="modal-body">
+                                <p><span class="text-uppercase font-weight-bold">FULL NAME : </span>{!! $otherBookeds->fullname !!}</p>
+                                <p><span class="text-uppercase font-weight-bold">E-MAIL : </span> {!! $otherBookeds->email !!} </p>
+                                <p><span class="text-uppercase font-weight-bold">DISTRICT : </span> {!! $otherBookeds->district !!} </p>
+                                <p><span class="text-uppercase font-weight-bold">CITY : </span> {!! $otherBookeds->city !!} </p>
+                                <p><span class="text-uppercase font-weight-bold">ADDRESS : </span> {!! $otherBookeds->address !!} </p>
+                                <p><span class="text-uppercase font-weight-bold">MOBILE : </span> {!! $otherBookeds->mobNo !!} </p>
+                            </div>
                         </div>
                         </div>
                     </div>
