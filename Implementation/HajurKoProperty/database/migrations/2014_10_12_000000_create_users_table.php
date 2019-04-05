@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('address',150);
             $table->string('mobNo',150);
             $table->boolean('uType')->default(0);
+            $table->string('arequest')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

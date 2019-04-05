@@ -95,7 +95,7 @@
 														@else
 															<button type="submit"  id="btnB" onclick="newFunction()" name="book" class="btn btn-success pl-5 pr-5 pt-3 pb-3 font-weight-bold">Book Now</button>
 														@endif
-{{-- 														
+													{{-- 														
 													@elseif($book->user_id == Auth::user()->id and $book->propID != $details->id)
 													<button type="submit"  id="btnB" onclick="newFunction()" name="book" class="btn btn-success pl-5 pr-5 pt-3 pb-3 font-weight-bold">Book Now</button>
 													@break --}}

@@ -111,7 +111,7 @@
         <div class="content">
             @yield('uadContent')
         </div>
-        <!-- /.content -->
+        {{-- <!-- /.content -->
         <!-- Footer -->
         <footer class="page-footer bg-light" style="margin-top: 70px;">
             <div class="footer-copyright text-center text-black-50 py-3" style="background-color: #E8EAED;">
@@ -119,7 +119,7 @@
             </div>
             <!-- Copyright -->
         </footer>
-        <!-- Footer -->
+        <!-- Footer --> --}}
     </div>
 </body>
 </html>

@@ -10,6 +10,7 @@ use App\Facilities;
 use App\Rooms;
 use App\Bookings;
 use App\Images;
+use App\User;
 use Auth;
 
 class adminController extends Controller
@@ -75,6 +76,43 @@ class adminController extends Controller
         //
     }
 
+    public function reqAdmin(Request $request, $id)
+    {
+        $usr = User::find($id);
+        $usr->arequest = "requested";
+        $usr->save();
+
+        return redirect()->back()->with('success', 'your request has been send to admin');
+    }
+
+    public function listRequests()
+    {
+        $getUsr = DB::table('users')->where('arequest', '=', 'requested')->get();
+
+        return view('adminJob.adminAdd')->with('getUsr',$getUsr);
+    }
+
+    public function acceptAdmin($id)
+    {
+        $adminAccept = User::find($id);
+
+        $adminAccept->arequest = 'accepted';
+        $adminAccept->uType = '1';
+
+        $adminAccept->save();
+        return redirect()->back()->with('success', 'Admin request accepted');
+
+    }
+
+    public function rejectAdmin($id)
+    {
+        $adminAccept = User::find($id);
+
+        $adminAccept->arequest = 'rejected';
+
+        $adminAccept->save();
+        return redirect()->back()->with('success', 'Admin request accepted');
+    }
     /**
      * Display the specified resource.
      *

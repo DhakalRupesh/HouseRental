@@ -337,7 +337,8 @@
         <p class="text-info"></p>
     </div>
 </div>
-
+@auth
+@if(Auth::user()->uType == 0)
 <div class="container pt-4">
     <div class="row">
         <div class="col-lg-1"></div>
@@ -351,12 +352,23 @@
         </div>
         <div class="col-lg-2 p-2 bg-secondary text-white">
             <h5 class="text-center pt-4">Become a Admin ??</h5>
-            <form action="" method="post" class="text-center" enctype="multipart/form-data">
-                <button class="btn btn-primary mt-1"> Send Request </button>
-            </form>
+            @auth
+                @if(Auth::user()->id and Auth::user()->arequest == 'requested')
+                    <p class="text-center"><small>Your Request is Pending</small></p>
+                @else
+                    <form action="{{ url('/',Auth::user()->id) }}" method="post" class="text-center" enctype="multipart/form-data">
+                        @csrf
+                        {!! method_field('put') !!}
+                        <button class="btn btn-primary mt-1"> Send Request </button>
+                    </form>
+                    <form action="{{ url('/',Auth::user()->id) }}" method="post" class="text-center" enctype="multipart/form-data">
+                @endif
+            @endauth
         </div>
         <div class="col-lg-1"></div>
         <div class="col-lg-1"></div>
     </div>
 </div>
+@endif
+@endauth
 @endsection 

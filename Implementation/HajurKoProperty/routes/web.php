@@ -77,6 +77,20 @@ Route::get('/listings','listingController@listProp');
 Route::get('/dashboard', function(){
     return view('adminJob.dashboard'); // ues ->middleware('auth')
 });
+// queries admin
+Route::get('/adminQueries', function(){
+    return view('queries.adminQueriesView');
+});
+// add admin
+Route::get('/adminAdd',function(){
+    return view('adminJob.adminAdd');
+});
+//adminRequest
+Route::put('/{id}','adminController@reqAdmin')->middleware('auth');
+//admin 
+Route::get('/adminAdd', 'adminController@listRequests');
+Route::put('/adminAdd/{id}', 'adminController@acceptAdmin');
+Route::put('/adminremove/{id}', 'adminController@rejectAdmin');
 //propType
 Route::get('/propVA', function(){
     return view('adminJob.propertyVA');
@@ -84,10 +98,6 @@ Route::get('/propVA', function(){
 Route::post('/propVA','adminController@addPropType');
 Route::get('/propVA','adminController@requestedProp');
 Route::put('/propVA/{id}','adminController@reqAccept');
-// queries admin
-Route::get('/adminQueries', function(){
-    return view('queries.adminQueriesView');
-});
 
 //Search 
 Route::get('/search_Result',function(){

@@ -19,13 +19,13 @@
 <div class="container mainA">
     <h3 class="text-center p-4">Admin Dashboard</h3>
     <div class="row  center text-white">
-        <a class="col-lg-3 col-md-4 bg-info  mt-3 mb-3 pt-3 pb-3 controls" style="width: 22rem;">
+        <a class="col-lg-3 col-md-4 bg-info text-white mt-3 mb-3 pt-3 pb-3 controls" href="{!! URL::to('/adminAdd') !!}" style="width: 22rem;">
             <h4 class="text-center"><img src="{!! asset('images/team.png') !!}" alt="eventLogo"></h4>
             <h4 class="text-center">Members</h4>
             <p class="text-center"><small>Add & Delete Admin</small></p>
         </a>
         <a class="col-lg-1 col-md-4"></a>
-        <a class="col-lg-3 col-md-4 bg-info text-white mt-3 mb-3 pt-3 pb-3 controls" href="{!! URL::to('/propVA') !!}"style="width: 22rem;">
+        <a class="col-lg-3 col-md-4 bg-info text-white mt-3 mb-3 pt-3 pb-3 controls" href="{!! URL::to('/propVA') !!}" style="width: 22rem;">
             <h4 class="text-center"><img src="{!! asset('images/blog.png') !!}" alt="sportlogo"></h4>
             <h4 class="text-center">Property</h4>
             <p class="text-center"><small>Verify & Approve</small></p>              
@@ -38,7 +38,7 @@
         </a>
      </div> 
 </div>
-<div class="container pt-4">
+<div class="container pt-5">
     <div class="row">
         <div class="col-lg-1"></div>
         <div class="col-lg-6 p-2 bg-light">
