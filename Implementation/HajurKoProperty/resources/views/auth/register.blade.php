@@ -64,18 +64,24 @@
                 </div>
 
                 <div class="form-group ">
-                    <select class="form-control form-control-sm{{ $errors->has('district') ? ' is-invalid' : '' }}" name="district" required>
-                    <option selected disabled>Choose your district......</option>
-                    <option>kathmandu</option>
-                    <option>pokhara</option>
-                    </select>
+                    <input type="text" name="district"  class="form-control form-control-sm" placeholder="District" required>
+                    <div id="valid" style="color: red;"> </div>
+                    <small id="emailHelp" class="form-text text-left text-muted">Ex: Gorkha</small>
                 </div>
 
                 <div class="form-group ">
                     <select class="form-control form-control-sm" name="city" required>
                         <option selected disabled>Choose your city.....</option>
-                        <option>kathmandu</option>
-                        <option>pokhara</option>
+                        <option>Biratnagar</option>
+                        <option>Janakpur</option>
+                        <option>Hetuda</option>
+                        <option>Pokhara</option>
+                        <option>Butwal</option>
+                        <option>Birendranagar</option>
+                        <option>Kathmandu</option>
+                        <option>Chitwan</option>
+                        <option>Biratnagar</option>
+                        <option>Jhapa</option>
                     </select>
                 </div>
 

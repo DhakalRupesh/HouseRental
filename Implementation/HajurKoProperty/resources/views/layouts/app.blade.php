@@ -95,13 +95,13 @@
                                         </button>
                                         </div>
                                         <div class="modal-body">
-                                            <div class="form-inline">
-                                                <form action="/search_Result" class="search-form">
-                                                    @csrf
+                                            <form action="/search_Result" class="search-form">
+                                                @csrf
+                                                <div class="form-row ">
                                                     <input class="form-control" type="text" placeholder="Search Location only" name="searchData" aria-label="Search">
-                                                    <button class="btn btn-info" type="submit"><i class="fa fa-search p-1"></i>Search</button>
-                                                </form>
-                                            </div>
+                                                    <button class="btn btn-primary btn-block mt-2" type="submit"><i class="fa fa-search p-1"></i>Search</button>
+                                                </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>

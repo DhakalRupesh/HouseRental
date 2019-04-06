@@ -23,13 +23,7 @@ class bookController extends Controller
             $usID = Auth::user()->id;
             $book=Bookings::where('propID',$id)->where('user_id',$usID)->get();
             $propBook = new Bookings();
-
-            $date = date("Y-m-d");
-            // $time = strtotime("now");
             $prID = $id;
-
-            $propBook->bookedDate = $date; 
-            // $propBook->bookedTime = $time; 
             $propBook->user_id = $usID; 
             $propBook->propID = $prID; 
             $propBook->status = 'booked';

@@ -88,9 +88,7 @@
 													
 													@if($book->user_id == Auth::user()->id and $book->propID == $details->id)
 														@if($book->status == "booked")	
-														<form action="{!! url('/propDel',[$details->id])!!}" method="POST">
-															<button type="submit" id="btnU" onclick="newFunction1()" class="btn btn-danger pl-5 pr-5 pt-3 pb-3 font-weight-bold">Unbook</button>
-														</form>
+															<h6 class="text-info">You have booked this property</h6>
 														@break;
 														@else
 															<button type="submit"  id="btnB" onclick="newFunction()" name="book" class="btn btn-success pl-5 pr-5 pt-3 pb-3 font-weight-bold">Book Now</button>
