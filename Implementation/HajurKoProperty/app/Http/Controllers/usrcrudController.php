@@ -10,6 +10,7 @@ use App\Proptypes;
 use App\Bookings;
 use App\Images;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 
 class usrcrudController extends Controller
@@ -229,7 +230,7 @@ class usrcrudController extends Controller
         $image_dir = "uploads/files";
         $propdel = Properties::find($id);
 
-        $images = DB::table('images')->select('id')->where('propID','=',$id);
+        // $images = DB::table('images')->select('id')->where('propID','=',$id);
         if($propdel->img1 && app('files')->exists($this->$image_dir. '/' . $propdel->img1)){
             app('files')->delete($this->$image_dir. '/' . $propdel->img1);
         }

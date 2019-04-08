@@ -27,14 +27,13 @@ class detailController extends Controller
     }
 
     public function detailProp(Request $request, $id)
-    {   
-
-        
+    {        
         // property details
         $detail = DB::table('proptypes')
         ->join('properties','properties.propType_id', '=', 'proptypes.id')
         ->join('facilities','properties.id','=','facilities.propID')
         ->join('rooms','properties.id','=','rooms.propID')
+        ->join('images', 'properties.id','=','images.propID')
         ->where('properties.id',$id)
         ->get();
 
@@ -47,9 +46,11 @@ class detailController extends Controller
         //booking table
         $books = DB::table('bookings')->get();
 
+        $image = DB::table('images')->where('properties.id',$id);
+        // dd($image);
         //side view
     
-        return View('propView.detailview', compact(['detail','usrDetail','books']));
+        return View('propView.detailview', compact(['detail','usrDetail','books','image']));
     }
     /**
      * Show the form for creating a new resource.

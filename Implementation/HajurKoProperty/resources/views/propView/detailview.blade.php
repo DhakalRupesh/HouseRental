@@ -31,7 +31,7 @@
 		<div class="container text-white">
 			@foreach($detail as $details)
 			<h2>Property Details</h2>
-			<h6> <span class="text-info" value="">{!! $details->propertyType !!}</span> - Suitable for - <span class="text-info">{!! $details->suitableFor !!}</span></h6>
+			<h6> <span class="text-info" value=""><i>{!! $details->propertyType !!}</span> - Suitable for - <span class="text-info">{!! $details->suitableFor !!}</i></span></h6>
 		</div>
 	</section>
 	<section class="page-section mt-3">
@@ -46,7 +46,13 @@
 							<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
 						</ol>
 						<div class="carousel-inner">
-							<div class="carousel-item active">
+							{{-- @foreach($image as $images) --}}
+							<div class="carousel-item active"> 
+									<img class="d-block w-100" src="{{ asset('uploads/files/'.$details->img1) }}" name="image[]" alt="First slide">
+								<div class="tag" name="ppfor">for {!! $details->propFor !!}</div>
+							</div>
+							{{-- @endforeach --}}
+							{{-- <div class="carousel-item active"> 
 								<img class="d-block w-100" src="{{ asset('images/hBanner.jpg') }}" alt="First slide">
 								<div class="tag" name="ppfor">for {!! $details->propFor !!}</div>
 							</div>
@@ -57,7 +63,7 @@
 							<div class="carousel-item">
 								<img class="d-block w-100" src="{{ asset('images/log.jpg') }}" alt="Third slide">
 								<div class="tag">for rent</div>
-							</div>
+							</div> --}}
 						</div>
 						<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
 							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -154,11 +160,19 @@
 						
 						</div>
 						<h3 class="sl-sp-title">Description</h3>
-						<div class="description">
-							<p>{!! $details->description !!}</p>
-						</div>
+						{{-- <div class="description">
+						</div> --}}
+						<div class="container">
+								<div class="row ">
+									<div class="col-lg-6 col-md-6 text-center"> 
+										<p class="text-justify">
+											{!! $details->description !!}
+										</p>
+									</div>
+								</div>
+							</div>
 						<h3 class="sl-sp-title bd-no">Location</h3>
-						<div class="pos-map" id="map-canvas"></div>
+						<div id="map" class="pos-map" id="map-canvas" style="height:60vh"></div>
 					</div>
 				</div>
 				<!-- sidebar -->
@@ -233,15 +247,11 @@ function newFunction(){
 	document.getElementById("btnB{!! $details->id !!}").hidden=true;
 }
 
-calTax = function()
-{
-	var val1 = document.getElementById('p1').value;
-	var val2 = document.getElementById('p2').value;
-	var val3 = document.getElementById('p3').value;
-
-	var total = parseInt(val1) + parseInt(val2) + parseInt(val3);
-
-	document.getElementById('resBox').value =  document.getElementById('p1');
-}
-
+function initMap() {
+    var uluru = {lat: 27.680640, lng: 85.332552}; //location
+    var map = new google.maps.Map(
+        document.getElementById('map'), {zoom: 4, center: uluru});
+    var marker = new google.maps.Marker({position: uluru, map: map});
+    }
 </script>	
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDt5qEgrDwWOoZwfQE2vKjimX8Fn8a3wCA&callback=initMap" type="text/javascript"></script>

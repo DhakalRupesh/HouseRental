@@ -113,6 +113,7 @@ class userController extends Controller
             ->join('rooms','properties.id','=','rooms.propID')
             ->where('user_id', '!=' ,Auth::User()->id)
             ->where('approval', '=', 'approved')
+            ->orderBy('properties.created_at','desc')            
             ->limit('6')
             ->get();
 
@@ -127,6 +128,7 @@ class userController extends Controller
             ->join('facilities','properties.id','=','facilities.propID')
             ->join('rooms','properties.id','=','rooms.propID')
             ->where('approval', '=', 'approved')
+            ->orderBy('properties.created_at','desc')
             ->limit('6')
             ->get();
             

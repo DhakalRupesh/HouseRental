@@ -75,29 +75,29 @@ Route::get('/listings','listingController@listProp');
 
 // Admin part
 Route::get('/dashboard', function(){
-    return view('adminJob.dashboard'); // ues ->middleware('auth')
+    return view('adminJob.dashboard')->middleware('auth'); // ues ->middleware('auth')
 });
 // queries admin
 Route::get('/adminQueries', function(){
-    return view('queries.adminQueriesView');
+    return view('queries.adminQueriesView')->middleware('auth');
 });
 // add admin
 Route::get('/adminAdd',function(){
-    return view('adminJob.adminAdd');
+    return view('adminJob.adminAdd')->middleware('auth');
 });
 //adminRequest
 Route::put('/{id}','adminController@reqAdmin')->middleware('auth');
 //admin 
-Route::get('/adminAdd', 'adminController@listRequests');
-Route::put('/adminAdd/{id}', 'adminController@acceptAdmin');
-Route::put('/adminremove/{id}', 'adminController@rejectAdmin');
+Route::get('/adminAdd', 'adminController@listRequests')->middleware('auth');
+Route::put('/adminAdd/{id}', 'adminController@acceptAdmin')->middleware('auth');
+Route::put('/adminremove/{id}', 'adminController@rejectAdmin')->middleware('auth');
 //propType
 Route::get('/propVA', function(){
     return view('adminJob.propertyVA');
 });
-Route::post('/propVA','adminController@addPropType');
-Route::get('/propVA','adminController@requestedProp');
-Route::put('/propVA/{id}','adminController@reqAccept');
+Route::post('/propVA','adminController@addPropType')->middleware('auth');
+Route::get('/propVA','adminController@requestedProp')->middleware('auth');
+Route::put('/propVA/{id}','adminController@reqAccept')->middleware('auth');
 
 //Search 
 Route::get('/search_Result',function(){

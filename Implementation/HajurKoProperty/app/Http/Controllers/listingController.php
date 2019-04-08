@@ -64,7 +64,7 @@ class listingController extends Controller
        
     }
 
-    public function listProp()
+    public function listProp(Request $request)
     {
         if(Auth::check()){
             $list = DB::table('properties')

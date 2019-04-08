@@ -20,7 +20,7 @@
 
 <div class="container">
 {{-- <label class="mt-3"> <h4 class="text-danger font-weight-bold"><u>Property Details</u></h4> </label> --}}
-<P class="text-right">
+{{-- <P class="text-right">
     <div class="form-group  mb-3 catbox">
         <label class=" form-control-label">Select Property type</label>
         <div class="input-group">
@@ -32,7 +32,7 @@
             </select>
         </div>
     </div>
-</P>
+</P> --}}
  
 </div>
 

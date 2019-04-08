@@ -257,7 +257,7 @@
       <div class="card shadow" style="width: 22rem;">
         
         <img class="card-img-top" src="images/hs.jpg" alt="Card image cap">
-        <div class="topText top-right text-white"><i class="fa fa-plus"></i></div>
+        {{-- <div class="topText top-right text-white"><i class="fa fa-plus"></i></div> --}}
 
         <div class="card-body">
           <div class="text-center feature-title">
