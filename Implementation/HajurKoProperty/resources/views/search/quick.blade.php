@@ -18,8 +18,7 @@
     </div>
 </section>
 
-<div class="container">
-{{-- <label class="mt-3"> <h4 class="text-danger font-weight-bold"><u>Property Details</u></h4> </label> --}}
+{{-- <div class="container">
 <P class="text-right">
     <div class="form-group  mb-3 catbox">
         <label class=" form-control-label">Select Property type</label>
@@ -33,13 +32,12 @@
         </div>
     </div>
 </P>
- 
-</div>
+</div> --}}
 
 <div class="container mt-4">
   <div class="">
       {{-- <h2 class="text-dark mb-2">Featured Listings</h2> --}}
-      <p class="">Here is your search reasult</p>
+      <p class="text-success">Here is your search reasult</p>
   </div>
 </div>
 
@@ -49,7 +47,7 @@
     @foreach($quickSrch as $quickSrchs)
     <div class="col-lg-4 col-md-6 mt-5"  style="">
       <div class="card shadow" style="width: 22rem;">
-        <img class="card-img-top" src="images/hs.jpg" alt="Card image cap">
+          <img class="card-img-top" src="{!! asset('uploads/files/'.$quickSrchs->image) !!}" alt="Card image cap" style="width: 22rem; height: 12rem;">        
         <div class="topText top-right text-white"><i class="fa fa-plus"></i></div>
 
         <div class="card-body">

@@ -219,7 +219,14 @@
                         </div>
 
                         <label class="mt-3"> <h4 class="text-primary font-weight-bold"><u>Images</u></h4></label><br>
-                        <label> Select four Images</label>                   
+                        <label>Choose to update picture</label>   
+                        <img src="{!! asset('uploads/files/'.$props->image) !!}" class="img-fluid img-thumbnail" style="width: 100px; height: 70px;">                
+                        <div class="form-row">
+                            <div class="col-lg-4 col-sm-4 col-11 mt-3 main-section">
+                                <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                <input class="form-control" type="file" name="image" value="">
+                            </div>
+                        </div>
 
                         <p class="text-center mt-5">
                             <input type="submit" class="btn btn-success btn-block shadow" name="update" value="Update">   

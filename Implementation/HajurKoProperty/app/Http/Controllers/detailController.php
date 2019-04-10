@@ -33,7 +33,7 @@ class detailController extends Controller
         ->join('properties','properties.propType_id', '=', 'proptypes.id')
         ->join('facilities','properties.id','=','facilities.propID')
         ->join('rooms','properties.id','=','rooms.propID')
-        ->join('images', 'properties.id','=','images.propID')
+        // ->join('images', 'properties.id','=','images.propID')
         ->where('properties.id',$id)
         ->get();
 

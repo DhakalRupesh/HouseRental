@@ -10,7 +10,6 @@
 		background-position: cover;
 	}
 	.tag{
-
 		position: absolute;
 		top: 8px;
 		right: 8px; 
@@ -40,39 +39,12 @@
 				<div class="col-lg-8 single-list-page">
 					
 					<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-						<ol class="carousel-indicators">
-							<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-							<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-							<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-						</ol>
 						<div class="carousel-inner">
-							{{-- @foreach($image as $images) --}}
 							<div class="carousel-item active"> 
-									<img class="d-block w-100" src="{{ asset('uploads/files/'.$details->img1) }}" name="image[]" alt="First slide">
+									<img class="d-block w-100" src="{{ asset('uploads/files/'.$details->image) }}" name="image[]" alt="First slide">
 								<div class="tag" name="ppfor">for {!! $details->propFor !!}</div>
 							</div>
-							{{-- @endforeach --}}
-							{{-- <div class="carousel-item active"> 
-								<img class="d-block w-100" src="{{ asset('images/hBanner.jpg') }}" alt="First slide">
-								<div class="tag" name="ppfor">for {!! $details->propFor !!}</div>
-							</div>
-							<div class="carousel-item">
-								<img class="d-block w-100" src="{{ asset('images/bannerH.jpg') }}" alt="Second slide">
-								<div class="tag">for rent</div>
-							</div>
-							<div class="carousel-item">
-								<img class="d-block w-100" src="{{ asset('images/log.jpg') }}" alt="Third slide">
-								<div class="tag">for rent</div>
-							</div> --}}
 						</div>
-						<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-							<span class="sr-only">Previous</span>
-						</a>
-						<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-							<span class="carousel-control-next-icon" aria-hidden="true"></span>
-							<span class="sr-only">Next</span>
-						</a>
 					</div>
 
 					<div class="single-list-content">
@@ -92,21 +64,21 @@
 											@foreach ($books as $book)	
 													{{--remove button  --}}
 													
-													@if($book->user_id == Auth::user()->id and $book->propID == $details->id)
-														@if($book->status == "booked")	
-															<h6 class="text-info">You have booked this property</h6>
-														@break;
-														@else
-															<button type="submit"  id="btnB" onclick="newFunction()" name="book" class="btn btn-success pl-5 pr-5 pt-3 pb-3 font-weight-bold">Book Now</button>
-														@endif
-													{{-- 														
-													@elseif($book->user_id == Auth::user()->id and $book->propID != $details->id)
-													<button type="submit"  id="btnB" onclick="newFunction()" name="book" class="btn btn-success pl-5 pr-5 pt-3 pb-3 font-weight-bold">Book Now</button>
+                                                @if($book->user_id == Auth::user()->id and $book->propID == $details->id)
+                                                    @if($book->status == "booked")	
+                                                        <h6 class="text-info">You have booked this property</h6>
+                                                    @break;
+                                                    @else
+                                                        <button type="submit"  id="btnB" onclick="newFunction()" name="book" class="btn btn-success pl-5 pr-5 pt-3 pb-3 font-weight-bold">Book Now</button>
+                                                    @endif
+																											
+													{{-- @elseif($book->user_id == Auth::user()->id and $book->propID != $details->id)
+                                                        <button type="submit"  id="btnB" onclick="newFunction()" name="book" class="btn btn-success pl-5 pr-5 pt-3 pb-3 font-weight-bold">Book Now</button>
 													@break --}}
 													
-													@endif
+                                                @endif
 													
-													@endforeach
+                                            @endforeach
 							
 										@else
 										{{-- Delte --}}
@@ -212,7 +184,6 @@
 							->limit('3')
 							->get();
 							// dd($side);
-
 						@endphp
 						@foreach($side as $sides)
 							<div class="rp-item">
@@ -242,11 +213,9 @@
 @endsection 
 
 <script type="text/javascript" lang="javascript"> 
-
-function newFunction(){
-	document.getElementById("btnB{!! $details->id !!}").hidden=true;
-}
-
+// function newFunction(){
+// 	document.getElementById("btnB{!! $details->id !!}").hidden=true;
+// }
 function initMap() {
     var uluru = {lat: 27.680640, lng: 85.332552}; //location
     var map = new google.maps.Map(

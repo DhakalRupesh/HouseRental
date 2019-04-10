@@ -228,7 +228,7 @@
                     <select class="s_Select" name="proPrice"> 
                         <option selected disabled>Select price range</option>
                         <option value="">250</option>
-                        <option value="">2</option>
+                        <option value="">267</option>
                         <option value="">5</option>
                     </select>
                     {{-- <input type="text" name="proPrice" id=""> --}}
@@ -256,7 +256,8 @@
     <div class="col-lg-4 col-md-6 mt-5"  style="">
       <div class="card shadow" style="width: 22rem;">
         
-        <img class="card-img-top" src="images/hs.jpg" alt="Card image cap">
+        <img class="card-img-top" src="{!! asset('uploads/files/'.$welprops->image) !!}" alt="Card image cap" style="width: 22rem; height: 12rem;">
+
         {{-- <div class="topText top-right text-white"><i class="fa fa-plus"></i></div> --}}
 
         <div class="card-body">

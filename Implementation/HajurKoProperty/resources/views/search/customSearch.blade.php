@@ -18,9 +18,9 @@
     </div>
 </section>
 
-<div class="container">
+{{-- <div class="container"> --}}
 {{-- <label class="mt-3"> <h4 class="text-danger font-weight-bold"><u>Property Details</u></h4> </label> --}}
-<P class="text-right">
+{{-- <P class="text-right">
     <div class="form-group  mb-3 catbox">
         <label class=" form-control-label">Select Property type</label>
         <div class="input-group">
@@ -32,9 +32,9 @@
             </select>
         </div>
     </div>
-</P>
+</P> --}}
  
-</div>
+{{-- </div> --}}
 
 <div class="container mt-4">
   <div class="">
@@ -49,7 +49,7 @@
     @foreach($cusSearch as $cusSearchs)
     <div class="col-lg-4 col-md-6 mt-5"  style="">
       <div class="card shadow" style="width: 22rem;">
-        <img class="card-img-top" src="images/hs.jpg" alt="Card image cap">
+          <img class="card-img-top" src="{!! asset('uploads/files/'.$cusSearchs->image) !!}" alt="Card image cap" style="width: 22rem; height: 12rem;">
         <div class="topText top-right text-white"><i class="fa fa-plus"></i></div>
 
         <div class="card-body">

@@ -227,8 +227,7 @@
                         <div class="form-row">
                             <div class="col-lg-4 col-sm-4 col-11 main-section">
                                 <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                <input class="form-control" type="file" name="files[]">
-                                <input class="form-control" type="file" name="files[]">
+                                <input class="form-control" type="file" name="image">
                             </div>
                         </div>
 

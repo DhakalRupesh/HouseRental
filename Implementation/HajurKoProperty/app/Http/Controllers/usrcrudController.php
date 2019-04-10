@@ -15,6 +15,7 @@ use Illuminate\Http\Request;
 
 class usrcrudController extends Controller
 {
+    protected $image_dir = "uploads/files";
     /**
      * Display a listing of the resource.
      *
@@ -35,11 +36,11 @@ class usrcrudController extends Controller
         //
     }
 
-    public function fileUpload($file, $dir)
+    public function uploadfile($file,$dir)
     {
-        $file_extension = $file->getClientOriginalExtension();
-        $file_name = md5(time()) . '.' . $file_extension;
-        $file->move($dir, $file_name);
+        $file_extension=$file->getClientOriginalExtension();
+        $file_name=md5(time()). '.' . $file_extension;
+        $file->move($dir,$file_name);
         return $file_name;
     }
     
@@ -66,7 +67,12 @@ class usrcrudController extends Controller
         $prop->electricP = $request->electricP; 
         $prop->totPrice = $request->propPrice; 
         $prop->description = $request->description; 
-        
+
+        if(request()->hasFile('image')){
+            $file_name=$this-> uploadfile(request()->file('image'),$this->image_dir);
+            $prop->image=$file_name;
+        }
+
         $prop->propType_id = $request->propType;
         $prop->user_id = $request->uid;
             
@@ -95,21 +101,21 @@ class usrcrudController extends Controller
         $room->propID = $pid;
         $room->save();
 
-        if($request->hasFile('files'))
-        {
-            $image_dir = "uploads/files";
-            $newFile = $request->file('files');
-            foreach($newFile as $newFiles)
-            {
-                $extension=$newFiles->getClientOriginalExtension();
-                $fileName = rand(100,999999).time().'.'.$extension;
-                $newFiles->move($image_dir,$fileName);
-                $fileModel = new Images();
-                $fileModel->img1 = $fileName;
-                $fileModel->propID = $pid;
-                $fileModel->save();
-            } 
-        }
+        // if($request->hasFile('image'))
+        // {
+        //     $image_dir = "uploads/files";
+        //     $newFile = $request->file('image');
+        //     // foreach($newFile as $newFiles)
+        //     // {
+        //         $extension=$newFile->getClientOriginalExtension();
+        //         $fileName = rand(100,999999).time().'.'.$extension;
+        //         $newFile->move($image_dir,$fileName);
+        //         $fileModel = new Images();
+        //         $fileModel->img1 = $fileName;
+        //         $fileModel->propID = $pid;
+        //         $fileModel->save();
+        //     // } 
+        // }
 
         return redirect('addProp')->with('success', 'Property Listed successfully');
     }
@@ -159,6 +165,7 @@ class usrcrudController extends Controller
         $prop=Proptypes::join('Properties','Proptypes.id', '=', 'Properties.propType_id')
         ->join('Facilities','Properties.id','=', 'Facilities.propID')
         ->join('Rooms','Properties.id','=', 'Rooms.propID')
+        // ->join('images', 'properties.id','=','images.propID')
         ->where('Properties.id',$id)
         ->get();
 
@@ -194,7 +201,15 @@ class usrcrudController extends Controller
         $prop->waterP = $request->watPrice; 
         $prop->electricP = $request->electricP; 
         $prop->totPrice = $request->propPrice; 
-        $prop->description = $request->description; 
+        $prop->description = $request->description;
+
+        if ($request->hasFile('image')) {
+          if ($prop->image && app('files')->exists($this->image_dir . '/' . $prop->image)) {
+            app('files')->delete($this->image_dir . '/' . $prop->image);
+          }
+          $file_name = $this->uploadFile($request->file('image'), $this->image_dir);
+          $prop->image = $file_name;
+        } 
         $prop->save();
         
         $faci = Facilities::find($id)->where('propID',$id)->first();
@@ -227,14 +242,11 @@ class usrcrudController extends Controller
      */
     public function destroy($id)
     {
-        $image_dir = "uploads/files";
         $propdel = Properties::find($id);
-
-        // $images = DB::table('images')->select('id')->where('propID','=',$id);
-        if($propdel->img1 && app('files')->exists($this->$image_dir. '/' . $propdel->img1)){
-            app('files')->delete($this->$image_dir. '/' . $propdel->img1);
+        if ($propdel->image && app('files')->exists($this->image_dir . '/' . $propdel->image)) 
+        {
+            app('files')->delete($this->image_dir . '/' . $propdel->image);
         }
-
         $propdel->delete();
         return redirect()->back()->with('success', 'Property Deleted Syccessfully!!');
     }

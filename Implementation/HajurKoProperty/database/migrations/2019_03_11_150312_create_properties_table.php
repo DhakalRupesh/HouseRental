@@ -25,6 +25,7 @@ class CreatePropertiesTable extends Migration
             $table->double('totPrice');
             $table->text('description',255)->nullable();
             $table->string('approval')->default('unapproved');
+            $table->string('image')->nullable();
 
             $table->integer('propType_id')->unsigned();
             $table->foreign('propType_id')->references('id')->on('proptypes');
