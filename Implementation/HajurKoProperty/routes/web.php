@@ -21,7 +21,6 @@ Route::get('/usrpannel',function(){
 });
 //User Part
 //userPannel
-
 Route::get('/listingsyour',function(){
     return view('propcrud.editProp');
 })->middleware('auth');

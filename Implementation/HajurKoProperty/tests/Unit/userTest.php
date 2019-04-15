@@ -17,10 +17,15 @@ class userTest extends TestCase
      */
     public function testLoginTest()
     {
-        $email = "aayushdhakal544@gmail.com";
-        $password = "aayushdhakal544@gmail.com";
-        $testResponse = $this->call("GET", "/login/$email/$password");
-        $this->assertEquals(404, $testResponse->status());
+        $email="aayushdhakal544@gmail.com";
+	    $password="newPassword5454";
+
+	    $testTesponse = $this->call("GET",'/login',[
+	    	'email'=>$email,
+	    	'password' => $password
+	    ]);
+
+	    $this->assertEquals(200, $testTesponse->status());
     }
 
     /**
@@ -29,16 +34,20 @@ class userTest extends TestCase
      * @return void
      */
     public function testRegisterTest()
-    {
-        $fullname = "Rupesh Dhakal";
-        $email = "aayushdhakal544@gmail.com";
-        $district = "kathmandu";
-        $city = "kathmandu";
-        $address = "nayabazar, kathmandu";
-        $mobNo = "9847512547";
-        $password = "newPassword123";
-        $testResponse=$this->call("POST","/register/$fullname/$email/$district/$city/$address/$mobNo/$password");
-        $this->assertEquals(404,$testResponse->status());
+    {   
+        $testTesponse = $this->call("POST",'/register',[
+	    	'fullname' => "user",
+	    	'email' => "gmail@gamil.com",
+	    	'district' => "kathmandu",
+	    	'city' => "kathmandu",
+	    	'address' => "nayabazar,kathmandu",
+	    	'mobNo' => "2136547891",
+	    	'uType' => "0",
+            'arequest' => "",
+            'password' => "newPassword",
+	    ]);
+
+	    $this->assertEquals(302, $testTesponse->status());
     }
 
     /**
@@ -58,10 +67,16 @@ class userTest extends TestCase
      * @return void
      */
     public function testUpdateProfile()
-    {
-        $book = factory(User::class)->create();
-        $testResponse = $this->actingAs($book)->get('/profile/1');
-        $testResponse->assertSee('profile update successful');
+    {    
+        $testTesponse = $this->call("POST",'/profile',[
+            'fullname' => "user",
+	    	'district' => "kathmandu",
+	    	'city' => "kathmandu",
+	    	'address' => "nayabazar,kathmandu",
+	    	'mobNo' => "2136547891",
+	    ]);
+
+	    $this->assertEquals(405, $testTesponse->status());
     }
 
        /**
@@ -71,7 +86,10 @@ class userTest extends TestCase
      */
     public function testAdminorNot()
     {
-        $admin = factory(User::class)->get();
-        $this->assertFalse($admin->uType);
+        $uType="1";
+	    $testTesponse = $this->call("GET",'/dashboard',[
+	    	'uType'=>$uType,
+	    ]);
+	    $this->assertEquals(200, $testTesponse->status());
     }
 }

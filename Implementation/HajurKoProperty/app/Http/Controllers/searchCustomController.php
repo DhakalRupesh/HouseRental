@@ -29,13 +29,13 @@ class searchCustomController extends Controller
             ->join('Rooms','Properties.id','=', 'Rooms.propID') 
             ->where('propLocation','like','%'.$location.'%')
             ->orWhere('propertyType','like','%'.$proType.'%')
-            ->Where('totPrice',$proPrice)
+            ->orWhere('totPrice',$proPrice)
             ->get();
 
             $pt = new Proptypes();
             // $pt = $pt->get();
 
-            // return view('search.customSearch', compact(['cusSearch','pt',]));
+            return view('search.customSearch', compact(['cusSearch','pt',]));
         // }else{
         //     return redirect()->back()->with('fail', 'Empty fields!!');
         // }

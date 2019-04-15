@@ -219,18 +219,20 @@
                 <form action="/customSearchReasult" >
                     @csrf
                     <input type="text" class="s_Select mb-3" name="loc" placeholder="Enter a location......">
-                    <select class="s_select mb-3" name="proType">  
+                    <select class="s_select mb-3" name="proType" id="proType">  
                         <option selected disabled>Select property type</option>
                         @foreach($pt as $pts)
                             <option value={{$pts->id}}>{{$pts->propertyType}}</option>
                         @endforeach
                     </select>
-                    <select class="s_Select" name="proPrice"> 
+                    {{-- <input name="catvalue" id="catvalue" value="" readonly> --}}
+                    {{-- <select class="s_Select" name="proPrice"> 
                         <option selected disabled>Select price range</option>
                         <option value="">250</option>
                         <option value="">267</option>
                         <option value="">5</option>
-                    </select>
+                    </select> --}}
+                    <input type="text" class="s_Select mb-3" name="proPrice" placeholder="Enter price......">
                     {{-- <input type="text" name="proPrice" id=""> --}}
                     <button class="main_btn mt-4">SEARCH</button>
                 </form>
@@ -373,3 +375,12 @@
 @endif
 @endauth
 @endsection 
+<script>
+    $(document).ready(function () {
+        $("#proType").change(function () {
+        var selectedText2 =  $("#proType option:selected").text();
+        // alert("You selected :" + selectedText2 );
+        $('[name="catvalue"]').val(selectedText2);
+    });
+});
+</script>

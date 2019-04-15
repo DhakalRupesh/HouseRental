@@ -21,8 +21,12 @@ class PropertyTest extends TestCase
     public function testSearchTest()
     {
         $searchValue = "Kathmandu";
-        $testResponse = $this->call("GET", "/search_Result/$searchValue");
-        $this->assertEquals(404, $testResponse->status());
+
+	    $testTesponse = $this->call("GET",'/search_Result',[
+	    	'location'=>$searchValue,
+	    ]);
+
+        $this->assertEquals(200, $testTesponse->status());  
     }
     
      /**
@@ -40,21 +44,23 @@ class PropertyTest extends TestCase
 
     public function testAddNewProperty()
     {
-        $propType_id = "2";
-        $propFor = "sale";
-        $propDistrict = "lukla";
-        $propLocation = "Mustang, Nepal";
-        $propSize = "2";
-        $suitableFor = "rent";
-        $waterP = "21";
-        $electricP = "22";
-        $totPrice = "23";
-        $description = "this is description";
-        $approval = "unapproved";
-        $user_id = '1';
+        $testTesponse = $this->call("POST",'/addProp',[
+	    	'propType_id' => "2",
+            'propFor' => "sale",
+            'propDistrict' => "lukla",
+            'propLocation' => "Mustang, Nepal",
+            'propSize' => "2",
+            'suitableFor' => "rent",
+            'waterP' => "21",
+            'electricP' => "22",
+            'totPrice' => "23",
+            'description' => "this is description",
+            'approval' => "unapproved",
+            'user_id' => '1',
 
-        $testResponse=$this->call("POST","/addProp/$propType_id/$propFor/$propDistrict/$propLocation/$propSize/$suitableFor/$waterP/$electricP/$totPrice/$description/$approval/$user_id");
-        $this->assertEquals(404,$testResponse->status());
+	    ]);
+
+	    $this->assertEquals(302, $testTesponse->status());
     }
     /**
      * A basic test example.
@@ -95,8 +101,11 @@ class PropertyTest extends TestCase
      */
     public function testBookPropertyNoLogin()
     {   
-        $book = factory(Bookings::class)->create();
-        $testResponse = $this->actingAs($book)->get('/propDetail/1');
-        $this->assertRedirect('/login');      
+        $status="unbook";
+	    $testTesponse = $this->call("GET",'/login',[
+	    	'status'=>$status,
+	    ]);
+
+	    $this->assertEquals(200, $testTesponse->status());
     }
 }
