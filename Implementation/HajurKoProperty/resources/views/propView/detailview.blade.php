@@ -212,15 +212,15 @@
 @extends('_layouts.customFoot')
 @endsection 
 
-<script type="text/javascript" lang="javascript"> 
-// function newFunction(){
-// 	document.getElementById("btnB{!! $details->id !!}").hidden=true;
-// }
-function initMap() {
+<h3 class="text-center">View Location For Events</h3>
+    <!--The div element for the map -->
+    <div id="map" class="container-fluid" style="height:60vh"></div>
+    <script>
+    function initMap() {
     var uluru = {lat: 27.680640, lng: 85.332552}; //location
     var map = new google.maps.Map(
         document.getElementById('map'), {zoom: 4, center: uluru});
     var marker = new google.maps.Marker({position: uluru, map: map});
     }
-</script>	
+    </script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDt5qEgrDwWOoZwfQE2vKjimX8Fn8a3wCA&callback=initMap" type="text/javascript"></script>
