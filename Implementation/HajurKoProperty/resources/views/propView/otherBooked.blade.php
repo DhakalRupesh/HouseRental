@@ -33,7 +33,7 @@
             
         </thead>
         <tbody>
-        <!-- Select all the data from the Sports table and Show it in a web table -->
+        
             @php
                 $i = 0;
             @endphp

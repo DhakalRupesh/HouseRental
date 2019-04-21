@@ -100,7 +100,6 @@ class userController extends Controller
         $usr->mobNo = $request->mobilenumber;
 
         $usr->save();
-        // return redirect()->to('profile/{id}')->with('success','profile updated successfully');
         return redirect()->back()->with('message', 'profile updated successfully');
 
     }

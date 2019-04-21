@@ -144,7 +144,21 @@
 								</div>
 							</div>
 						<h3 class="sl-sp-title bd-no">Location</h3>
-						<div id="map" class="pos-map" id="map-canvas" style="height:60vh"></div>
+						{{-- <div id="map" class="pos-map" id="map-canvas" style="height:60vh"> --}}
+							<h6 class="text-center">View Location of Property</h6>
+							<!--The div element for the map -->
+							<div id="map" class="container-fluid" style="height:60vh"></div>
+							<script>
+							function initMap() {
+							var uluru = {lat: 27.680640, lng: 85.332552}; //location
+							var map = new google.maps.Map(
+								document.getElementById('map'), {zoom: 4, center: uluru});
+							var marker = new google.maps.Marker({position: uluru, map: map});
+							}
+							</script>
+						<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDt5qEgrDwWOoZwfQE2vKjimX8Fn8a3wCA&callback=initMap" type="text/javascript"></script>
+
+						{{-- </div> --}}
 					</div>
 				</div>
 				<!-- sidebar -->
@@ -188,7 +202,8 @@
 						@foreach($side as $sides)
 							<div class="rp-item">
 								<div class="rp-pic set-bg" data-setbg="img/feature/1.jpg">
-								<div class="sale-notic">{!! $sides->propFor !!}</div>
+        							<img class="card-img-top" src="{!! asset('uploads/files/'.$sides->image) !!}" alt="Card image cap" style="width: 22rem; height: 12rem; margin-top: 10px;">										
+									<div class="sale-notic mt-1">{!! $sides->propFor !!}</div>
 								</div>
 								<div class="rp-info">
 									<h5>Price: {!! $sides->totPrice !!} </h5>
@@ -212,15 +227,3 @@
 @extends('_layouts.customFoot')
 @endsection 
 
-<h3 class="text-center">View Location For Events</h3>
-    <!--The div element for the map -->
-    <div id="map" class="container-fluid" style="height:60vh"></div>
-    <script>
-    function initMap() {
-    var uluru = {lat: 27.680640, lng: 85.332552}; //location
-    var map = new google.maps.Map(
-        document.getElementById('map'), {zoom: 4, center: uluru});
-    var marker = new google.maps.Marker({position: uluru, map: map});
-    }
-    </script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDt5qEgrDwWOoZwfQE2vKjimX8Fn8a3wCA&callback=initMap" type="text/javascript"></script>

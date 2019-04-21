@@ -4,13 +4,10 @@
 
 <style>
 .banner_area{
-    background: url('images/abtUS.jpg');
+  background: url('images/abtUS.jpg');
 }
 .banner_area {
-  /* position: relative; */
-  /* z-index: 1; */
   min-height: 200px;
-  /* margin-bottom: 140px; */
 }
 
 .topText:hover{
@@ -29,7 +26,6 @@
   background: #060606;
   border-radius: 100px;
 	padding: 7px 13px;
-	/* z-index: 3; */
 }
 
 .feature-title p i {
@@ -115,9 +111,7 @@
 	float: right;
 }
 
-/*-----------------------------
-  Feature category section
------------------------------*/
+/*Feature category section*/
 
 .feature-category-section {
 	background: #f7f7f7;

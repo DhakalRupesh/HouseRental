@@ -111,14 +111,7 @@
         <div class="content">
             @yield('uadContent')
         </div>
-        {{-- <!-- /.content -->
-        <!-- Footer -->
-        <footer class="page-footer bg-light" style="margin-top: 70px;">
-            <div class="footer-copyright text-center text-black-50 py-3" style="background-color: #E8EAED;">
-                Copyright &copy; <a class="text-info" href="">hajurkoProperty.com</a>
-            </div>
-            <!-- Copyright -->
-        </footer>
+        {{-- <!-- content -->
         <!-- Footer --> --}}
     </div>
 </body>

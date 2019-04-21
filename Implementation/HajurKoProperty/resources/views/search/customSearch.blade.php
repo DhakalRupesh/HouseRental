@@ -18,28 +18,9 @@
     </div>
 </section>
 
-{{-- <div class="container"> --}}
-{{-- <label class="mt-3"> <h4 class="text-danger font-weight-bold"><u>Property Details</u></h4> </label> --}}
-{{-- <P class="text-right">
-    <div class="form-group  mb-3 catbox">
-        <label class=" form-control-label">Select Property type</label>
-        <div class="input-group">
-            <div class="input-group-addon"></div>
-            <select class="form-control" name="propType" required>
-              @foreach($pt as $pts)
-                <option value={{$pts->id}}>{{$pts->propertyType}}</option>
-              @endforeach
-            </select>
-        </div>
-    </div>
-</P> --}}
- 
-{{-- </div> --}}
-
 <div class="container mt-4">
   <div class="">
-      {{-- <h2 class="text-dark mb-2">Featured Listings</h2> --}}
-      <p class="text-success">Here is your search reasult for ..</p>
+    <p class="text-success">Here is your search reasult for ..</p>
   </div>
 </div>
 
@@ -74,12 +55,12 @@
           <div class="room-info"> 
             <div>
               <div class="rf-left">
-                {{-- <p><i class="fa fa-motorcycle"></i>{!! $cusSearch->bikeP !!} Bike </p> --}}
-                {{-- <p><i class="fa fa-tint"></i>{!! $cusSearch->waterB !!} Boaring </p> --}}
+                <p><i class="fa fa-motorcycle"></i>{!! $cusSearch->bikeP !!} Bike </p>
+                <p><i class="fa fa-tint"></i>{!! $cusSearch->waterB !!} Boaring </p>
               </div>
               <div class="rf-right">
-                {{-- <p><i class="fa fa-car"></i>{!! $cusSearch->carP !!} Car</p> --}}
-                {{-- <p><i class="fa fa-tint"></i>{!! $cusSearch->waterD !!} Drinking  </p> --}}
+                <p><i class="fa fa-car"></i>{!! $cusSearch->carP !!} Car</p>
+                <p><i class="fa fa-tint"></i>{!! $cusSearch->waterD !!} Drinking  </p>
               </div>
             </div>	
           </div>

@@ -25,14 +25,13 @@
         <div class="col-lg-6 col-md-6 text-center"> 
             <h3 class="text-dark">Welcome to HajurKo Property</h3>
             <p class="text-justify">
-                It is a long established fact that a reader will be distracted by the readable 
-                content of a page when looking at its layout. The point of using Lorem Ipsum is 
-                that it has a more-or-less normal distribution of letters, as opposed to using 
-                'Content here, content here', making it look like readable English. Many desktop 
-                publishing packages and web page editors now use Lorem Ipsum as their default 
-                model text, and a search for 'lorem ipsum' will uncover many web sites still in 
-                their infancy. Various versions have evolved over the years, sometimes by accident, 
-                sometimes on purpose (injected humour and the like).
+               HajurKo Property is an web application that allows you to add and book property.
+               This web application is an ingenious solution to the problem for searching property.
+               Any person that uses this application will have the privilege of listing their own
+               property as along with booking the property they desire. Old ways of searching house, 
+               rooms or flat will be minimized with the help of this application. In Short it is an 
+               unlimited resource for property and intelligent solution to find suitable home, office
+               and any other property for you. 
             </p>
         </div>
     </div>

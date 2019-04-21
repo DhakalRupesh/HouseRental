@@ -18,25 +18,8 @@
     </div>
 </section>
 
-{{-- <div class="container">
-<P class="text-right">
-    <div class="form-group  mb-3 catbox">
-        <label class=" form-control-label">Select Property type</label>
-        <div class="input-group">
-            <div class="input-group-addon"></div>
-            <select class="form-control" name="propType" required>
-              @foreach($pt as $pts)
-                <option value={{$pts->id}}>{{$pts->propertyType}}</option>
-              @endforeach
-            </select>
-        </div>
-    </div>
-</P>
-</div> --}}
-
 <div class="container mt-4">
   <div class="">
-      {{-- <h2 class="text-dark mb-2">Featured Listings</h2> --}}
       <p class="text-success">Here is your search reasult</p>
   </div>
 </div>

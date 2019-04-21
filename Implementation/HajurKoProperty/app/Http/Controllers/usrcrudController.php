@@ -101,22 +101,6 @@ class usrcrudController extends Controller
         $room->propID = $pid;
         $room->save();
 
-        // if($request->hasFile('image'))
-        // {
-        //     $image_dir = "uploads/files";
-        //     $newFile = $request->file('image');
-        //     // foreach($newFile as $newFiles)
-        //     // {
-        //         $extension=$newFile->getClientOriginalExtension();
-        //         $fileName = rand(100,999999).time().'.'.$extension;
-        //         $newFile->move($image_dir,$fileName);
-        //         $fileModel = new Images();
-        //         $fileModel->img1 = $fileName;
-        //         $fileModel->propID = $pid;
-        //         $fileModel->save();
-        //     // } 
-        // }
-
         return redirect('addProp')->with('success', 'Property Listed successfully');
     }
 
@@ -165,7 +149,6 @@ class usrcrudController extends Controller
         $prop=Proptypes::join('Properties','Proptypes.id', '=', 'Properties.propType_id')
         ->join('Facilities','Properties.id','=', 'Facilities.propID')
         ->join('Rooms','Properties.id','=', 'Rooms.propID')
-        // ->join('images', 'properties.id','=','images.propID')
         ->where('Properties.id',$id)
         ->get();
 
@@ -173,7 +156,6 @@ class usrcrudController extends Controller
         $pt = $pt->get();
 
         return view('propcrud.uandv', compact(['prop','pt']));
-        // ->join('Images',    'Properties.id','=', 'Images.propID')
     }
 
     /**

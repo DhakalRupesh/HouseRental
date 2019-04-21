@@ -106,8 +106,6 @@
                 </div>
                 <div class="form-group">
                     <input type="password" class="form-control form-control-sm" name="password_confirmation" placeholder="Confirm Password" required>
-                    <!-- <div id="CheckPasswordMatch" style="color: red;"></div>
-                    <div id="CheckPasswordMatch1" style="color: green;"></div> -->
                 </div>
 
                 <button type="submit" class="btn btn-success btn-block">

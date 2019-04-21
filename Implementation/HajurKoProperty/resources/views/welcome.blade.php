@@ -26,7 +26,6 @@
         background: #060606;
         border-radius: 100px;
         padding: 7px 13px;
-        /* z-index: 3; */
     }
     
     .feature-title p i {
@@ -331,9 +330,9 @@
     </div>
 </div>
 
-<div class="container">
+{{-- <div class="container">
     <p class='text-center p-1'>VcOunt</p> 
-</div>
+</div> --}}
 
 <div class="container"> 
     <div class="vCount">

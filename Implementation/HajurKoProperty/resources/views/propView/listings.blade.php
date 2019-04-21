@@ -19,21 +19,6 @@
 </section>
 
 <div class="container">
-{{-- <label class="mt-3"> <h4 class="text-danger font-weight-bold"><u>Property Details</u></h4> </label> --}}
-{{-- <P class="text-right">
-    <div class="form-group  mb-3 catbox">
-        <label class=" form-control-label">Select Property type</label>
-        <div class="input-group">
-            <div class="input-group-addon"></div>
-            <select class="form-control" name="propType" required>
-              @foreach($pt as $pts)
-                <option value={{$pts->id}}>{{$pts->propertyType}}</option>
-              @endforeach
-            </select>
-        </div>
-    </div>
-</P> --}}
- 
 </div>
 
 <div class="container mt-4">
@@ -48,7 +33,7 @@
     @foreach($list as $lists)
     <div class="col-lg-4 col-md-6 mt-5"  style="">
       <div class="card shadow" style="width: 22rem;">
-        <img class="card-img-top" src="images/hs.jpg" alt="Card image cap">
+        <img class="card-img-top" src="{!! asset('uploads/files/'.$lists->image) !!}" alt="Card image cap" style="width: 22rem; height: 12rem;">        
         <div class="topText top-right text-white"><i class="fa fa-plus"></i></div>
 
         <div class="card-body">

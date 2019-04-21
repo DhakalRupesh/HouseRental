@@ -78,7 +78,7 @@ Route::get('/dashboard', function(){
 });
 // queries admin
 Route::get('/adminQueries', function(){
-    return view('queries.adminQueriesView')->middleware('auth');
+    return view('queries.adminQueriesView');
 });
 // add admin
 Route::get('/adminAdd',function(){
