@@ -59,32 +59,18 @@
 								<form action="{!! url('/propDetail',[$details->id])!!}" method="POST">
 									@csrf
 									@if(Auth::check())
-										@if(App\Bookings::where('user_id',Auth::user()->id)->count()>0)
+										{{-- @if(App\Bookings::where('user_id',Auth::user()->id)->count()>0) --}}
 										{{-- check user has booked or not --}}
-											@foreach ($books as $book)	
-													{{--remove button  --}}
-													
-                                                @if($book->user_id == Auth::user()->id and $book->propID == $details->id)
-                                                    @if($book->status == "booked")	
-                                                        <h6 class="text-info">You have booked this property</h6>
-                                                    @break;
-                                                    @else
-                                                        <button type="submit"  id="btnB" onclick="newFunction()" name="book" class="btn btn-success pl-5 pr-5 pt-3 pb-3 font-weight-bold">Book Now</button>
-                                                    @endif
-																											
-													{{-- @elseif($book->user_id == Auth::user()->id and $book->propID != $details->id)
-                                                        <button type="submit"  id="btnB" onclick="newFunction()" name="book" class="btn btn-success pl-5 pr-5 pt-3 pb-3 font-weight-bold">Book Now</button>
-													@break --}}
-													
-                                                @endif
-													
-                                            @endforeach
-							
+
+
+										@if(DB::table('Bookings')->where('user_id',Auth::user()->id)->where('propId',$details->id)->where('status','booked')->count())
+
+											<h6 class="text-info">You have booked this property</h6>
 										@else
-										{{-- Delte --}}
-										<button type="submit"  id="btnB" onclick="newFunction()" name="book" class="btn btn-success pl-5 pr-5 pt-3 pb-3 font-weight-bold">Book Now</button>									
-										@endif			
+										<button type="submit"  id="btnB" onclick="newFunction()" name="book" class="btn btn-success pl-5 pr-5 pt-3 pb-3 font-weight-bold">Book Now</button>
+										@endif
 									@else
+									{{-- Button for unregistered user --}}
 									<button type="submit"  id="btnB" onclick="newFunction()" name="book" class="btn btn-success pl-5 pr-5 pt-3 pb-3 font-weight-bold">Book Now</button>
 									@endif
 										
