@@ -218,19 +218,6 @@
                 <form action="/customSearchReasult" >
                     @csrf
                     <input type="text" class="s_Select mb-3" name="loc" placeholder="Enter a location......">
-                    <select class="s_select mb-3" name="proType" id="proType">  
-                        <option selected disabled>Select property type</option>
-                        @foreach($pt as $pts)
-                            <option value={{$pts->id}}>{{$pts->propertyType}}</option>
-                        @endforeach
-                    </select>
-                    {{-- <input name="catvalue" id="catvalue" value="" readonly> --}}
-                    {{-- <select class="s_Select" name="proPrice"> 
-                        <option selected disabled>Select price range</option>
-                        <option value="">250</option>
-                        <option value="">267</option>
-                        <option value="">5</option>
-                    </select> --}}
                     <input type="text" class="s_Select mb-3" name="proPrice" placeholder="Enter price......">
                     {{-- <input type="text" name="proPrice" id=""> --}}
                     <button class="main_btn mt-4">SEARCH</button>
@@ -286,8 +273,8 @@
                 <p><i class="fa fa-tint"></i>{!! $welprops->waterB !!} Boaring </p>
               </div>
               <div class="rf-right">
-                <p><i class="fa fa-car"></i>{!! $welprops->carP !!} Car</p>
-                <p><i class="fa fa-tint"></i>{!! $welprops->waterD !!} Drinking  </p>
+                <p><i class="fa fa-car"></i>{!! $welprops->carP !!} Car </p>
+                <p><i class="fa fa-tint"></i>{!! $welprops->waterD !!} Drinking </p>
               </div>
             </div>	
           </div>

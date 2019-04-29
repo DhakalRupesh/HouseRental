@@ -20,7 +20,7 @@
 
 <div class="container mt-4">
   <div class="">
-    <p class="text-success">Here is your search reasult for ..</p>
+    <p class="text-success">Here is your search reasult</p>
   </div>
 </div>
 
@@ -55,12 +55,12 @@
           <div class="room-info"> 
             <div>
               <div class="rf-left">
-                <p><i class="fa fa-motorcycle"></i>{!! $cusSearch->bikeP !!} Bike </p>
+                {{-- <p><i class="fa fa-motorcycle"></i>{!! $cusSearch->bikeP !!} Bike </p>
                 <p><i class="fa fa-tint"></i>{!! $cusSearch->waterB !!} Boaring </p>
               </div>
               <div class="rf-right">
                 <p><i class="fa fa-car"></i>{!! $cusSearch->carP !!} Car</p>
-                <p><i class="fa fa-tint"></i>{!! $cusSearch->waterD !!} Drinking  </p>
+                <p><i class="fa fa-tint"></i>{!! $cusSearch->waterD !!} Drinking  </p> --}}
               </div>
             </div>	
           </div>
